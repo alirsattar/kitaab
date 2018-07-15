@@ -1,6 +1,5 @@
 * {
-  box-sizing: border-box
-}
+  box-sizing: border-box; }
 
 html {
   -webkit-font-smoothing: antialiased;
@@ -8,52 +7,43 @@ html {
   font-family: 'Dosis', sans-serif;
   line-height: 1.6;
   color: #666;
-  background: #F6F6F6;
-}
+  background: #F6F6F6; }
 
 #root {
   max-width: 1200px;
-  margin: 0 auto;
-}
+  margin: 0 auto; }
 
 img {
   display: block;
   margin: 1rem auto;
-  max-width: 100%;
-}
+  max-width: 100%; }
 
 p, h2, h3 {
-  padding: 10px;
-}
+  padding: 10px; }
 
 .container {
   display: flex;
-  flex-wrap: wrap;
-}
+  flex-wrap: wrap; }
 
 .card {
   margin: 1rem;
   width: 30%;
   background: white;
-  box-shadow: 2px 4px 25px rgba(0, 0, 0, .1);
+  box-shadow: 2px 4px 25px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
   overflow: hidden;
-  transition: all .2s linear;
-}
+  transition: all .2s linear; }
 
 .card:hover {
-  box-shadow: 2px 8px 45px rgba(0, 0, 0, .15);
-  transform: translate3D(0, -2px, 0);
-}
+  box-shadow: 2px 8px 45px rgba(0, 0, 0, 0.15);
+  transform: translate3D(0, -2px, 0); }
 
 @media screen and (min-width: 600px) {
   .card {
-    flex: 1 1 calc(50% - 2rem);
-  }
-}
+    flex: 1 1 calc(50% - 2rem); } }
 
 @media screen and (min-width: 900px) {
   .card {
-    flex: 1 1 calc(33% - 2rem);
-  }
-}
+    flex: 1 1 calc(33% - 2rem); } }
+
+/*# sourceMappingURL=style.css.map */
