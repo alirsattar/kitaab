@@ -1,27 +1,21 @@
-<div class="root">
+<h1>INDEX PAGE</h1>
 
-    <div class="search-box">
+{{#unless theUser}}
 
-        <h1>GET A BOOK</h1>
+<p><h2>LOG IN TO SEE A SURPRISE !</h2>
 
+{{/unless}}
 
-            <input id="searchInput" type="text" ></input>
-            <button id="get-book">SEARCH FOR BOOK</button>
+{{#if logoutMessage}}
 
-    </div>
+<h2>SUCCESSFULLY LOGGED OUT</h2>
 
-    <div class="container"></div>
+{{/if}}
 
-    {{!-- <p><span id="image"></span>
+{{#if theUser}}
 
-    <p><span id="title"></span>
+<h1>CONGRATS, YOU'RE LOGGED IN! HERE'S A SLOTH:</h1>
 
-    <p><span id="author"></span>
+<img src="https://falconvoice.com/wp-content/uploads/2017/10/sloth-03.jpg">
 
-    <p><span id="description"></span> --}}
-
-    <script src='./javascripts/script.js'></script>
-
-</div>
-
-TEST
+{{/if}}
