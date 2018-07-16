@@ -29,6 +29,9 @@ p, h2, h3 {
 .container {
   display: flex;
   flex-wrap: wrap;
+  background-color: #D5D5D5;
+  min-height: 200px;
+  border-radius: 5px;
 }
 
 .card {
@@ -44,6 +47,10 @@ p, h2, h3 {
 .card:hover {
   box-shadow: 2px 8px 45px rgba(0, 0, 0, .15);
   transform: translate3D(0, -2px, 0);
+}
+
+.select-book {
+  justify-content: center;
 }
 
 @media screen and (min-width: 600px) {

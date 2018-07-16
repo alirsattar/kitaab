@@ -7,7 +7,7 @@ router.get('/groups/new', (req, res, next) => {
 });
 
 // POST ROUTE FOR NEW GROUP PAGE
-router.post('/groups/create/:id', (req,res,next)=>{
+router.post('/groups/create/', (req,res,next)=>{
     
     res.send(req.body);
     
