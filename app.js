@@ -110,5 +110,10 @@ app.use('/', index);
 const user = require('./routes/userRoutes');
 app.use('/', user);
 
+// USER ROUTES
+
+const groups = require('./routes/groupRoutes');
+app.use('/', groups);
+
 
 module.exports = app;

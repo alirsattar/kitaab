@@ -11,6 +11,12 @@ const bcrypt = require('bcryptjs');
 
 // GET ROUTE FOR SIGNUP PAGE
 
+router.get('/users/addbooks', (req,res,next)=>{
+
+    res.render('books/addBooks');
+
+});
+
 router.get('/users/signup', (req,res,next)=>{
 
     res.render('users/signupPage');

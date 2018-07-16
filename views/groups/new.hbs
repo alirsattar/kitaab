@@ -1,0 +1,33 @@
+<h1>CREATE NEW GROUP PAGE</h1>
+
+<form action="/groups/create/" method="post">
+
+<label for="name">Group Name:</label>
+<input type="text" name="name" id="name">
+<br>
+
+<p><input type="radio" name="public" value="true">Public<br>
+<input type="radio" name="public" value="false">Private<br>
+<br>
+
+<p></p><button type="submit">CREATE GROUP</button>
+
+<div class="find-book">
+        <div class="search-box">
+
+            <h1>GET A BOOK</h1>
+
+
+                <input id="searchInput" type="text"  ></input>
+                <button id="get-book">SEARCH FOR BOOK</button>
+
+        </div>
+
+        <div class="container"></div>
+</div>
+
+</form>
+
+<p><a href="/celebrities">Back to Celebrities</a></p>
+
+<script src='/javascripts/addBooks.js'></script>

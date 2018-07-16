@@ -5,14 +5,20 @@ console.log('JS FILE SUCCESSFULLY LINKED');
 
 $('#get-book').click(function(){
 
+  event.preventDefault();
+
   var searchTerms = document.getElementById('searchInput');
 
+  console.log('------------- searchTerms var:' + searchTerms);
+
   var searchTermsEdited = searchTerms.value.replace(/\s/g, "+");
+
+  console.log('------------- searchTermsEdited var:' + searchTerms);
 
   var url = `https://www.googleapis.com/books/v1/volumes?q=${searchTermsEdited}&maxResults=40&orderBy:relevance`;
 
   console.log(url);
-  $('#books-container').empty();
+  $('.container').empty();
 
   axios.get(`${url}`)
     .then((theBooks)=>{
@@ -24,12 +30,16 @@ $('#get-book').click(function(){
 
           const bookCard = `
           
-          <div class="card">
-          <img src="${theBooks.data.items[i].volumeInfo.imageLinks.thumbnail}">
-          <h2>${theBooks.data.items[i].volumeInfo.title}</h2>
-          <h3 id="authors">${theBooks.data.items[i].volumeInfo.authors[0]}</h3>
-          <p>Description: ${bookDescription.substring(0,300)}...</p>
-          </div>
+            <div class="card">
+            <img src="${theBooks.data.items[i].volumeInfo.imageLinks.thumbnail}">
+            <h2>${theBooks.data.items[i].volumeInfo.title}</h2>
+            <h3 id="authors">${theBooks.data.items[i].volumeInfo.authors[0]}</h3>
+            <p>Description: ${bookDescription.substring(0,300)}...</p>
+            <form action='/groups/create/${theBooks.data.items[i]}' method='post'>
+            <button>CHOOSE THIS BOOK</button>
+            </form>
+            </div>
+
           `;
 
           // const newBook = `
