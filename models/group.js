@@ -2,12 +2,13 @@ const mongoose                      = require('mongoose');
 const Schema                        = mongoose.Schema;
 
 const groupSchema = new Schema({
+    owner:          {type: Schema.Types.ObjectId, ref: 'User'},
     name:           String,
-    currentBook:    [{type: Schema.Types.ObjectId, ref: 'Book'}],
+    currentBook:    {type: Schema.Types.ObjectId, ref: 'Book'},
     pastBooks:      [{type: Schema.Types.ObjectId, ref: 'Book'}],
     members:        [{type: Schema.Types.ObjectId, ref: 'User'}],
     public:         Boolean,
-    progress:       String,
+    progress:       Number,
     memberReviews:  [{type: Schema.Types.ObjectId, ref: 'Review'}],
     memberComments: [{type: Schema.Types.ObjectId, ref: 'Comment'}]
     },
