@@ -7,18 +7,21 @@ $('#get-book').click(function(){
   var searchTermsEdited = searchTerms.value.replace(/\s/g, "+");
   var url = `https://www.googleapis.com/books/v1/volumes?q=${searchTermsEdited}&maxResults=40&orderBy:relevance`;
   $('.container').empty();
+  console.log(url);
   axios.get(`${url}`)
     .then((theBooks)=>{
       console.log(theBooks);
       for (let i=0; i < theBooks.data.items.length; i++){
-        if(theBooks.data.items[i].volumeInfo.imageLinks.thumbnail && theBooks.data.items[i].volumeInfo.authors && theBooks.data.items[i].volumeInfo.description){
+        if (theBooks.data.items[i].volumeInfo.imageLinks && theBooks.data.items[i].volumeInfo.title && theBooks.data.items[i].volumeInfo.authors && theBooks.data.items[i].id && theBooks.data.items[i].volumeInfo.averageRating && theBooks.data.items[i].volumeInfo.pageCount && theBooks.data.items[i].volumeInfo.description){
           const bookDescription = theBooks.data.items[i].volumeInfo.description;
           const bookCard = `
             <div class="card">
             <img class="card-img" src="${theBooks.data.items[i].volumeInfo.imageLinks.thumbnail}">
             <h2 class="card-title">${theBooks.data.items[i].volumeInfo.title}</h2>
             <p><b>Author: </b><span class="card-author">${theBooks.data.items[i].volumeInfo.authors[0]}</span></p>
-            <p><b>Pages: </b><span class="card-pagecount">${theBooks.data.items[i].volumeInfo.pageCount}</span></p>
+            <br><b>Book ID: </b><span class="card-bookID">${theBooks.data.items[i].id}</span>
+            <br><b>Rating: </b><span class="card-rating">${theBooks.data.items[i].volumeInfo.averageRating}</span> out of 5
+            <br><b>Pages: </b><span class="card-pagecount">${theBooks.data.items[i].volumeInfo.pageCount}</span>
             <p><b>Description: </b><span class="card-description">${bookDescription.substring(0,300)}</span>...</p>
             <button class="select-book">CHOOSE THIS BOOK</button>
             </div>
@@ -26,17 +29,23 @@ $('#get-book').click(function(){
           $('.container').append(bookCard);
         }
       }
+    })
+    .catch((err)=>{
+      console.log(err);
     });
 });
 $(document).on('click','.select-book',function(e){
-  e.preventDefault();
   function turnCollectionToArray(htmlCollection) {
     var arr = [].slice.call(htmlCollection);
     return arr;
   }
-  const thisBook = e.currentTarget.parentElement;
+  const thisBook = $(this).parent();
   turnCollectionToArray(thisBook);
 
+  console.log(thisBook);
+  
+  console.log('-----------------------',$(thisBook).find('.card-img')[0].src );
+ 
   // WORKING CONSOLE.LOGS TO ACCESS INFO INSIDE THE CARDS
   // console.log(thisBook);
   // console.log( $(thisBook).find('.card-img')[0].src );
@@ -55,5 +64,12 @@ $(document).on('click','.select-book',function(e){
   $('#bookPagecount').val(            $(thisBook).find('.card-pagecount')[0].innerHTML );
   // SETTING THE 'DESCRIPTION' HIDDEN INPUT TO THIS VALUE FORM THE API RESPONSE LIST
   $('#bookDescription').val(          $(thisBook).find('.card-description')[0].innerHTML );
+  // SETTING THE 'BOOKID' HIDDEN INPUT TO THIS VALUE FORM THE API RESPONSE LIST
+  $('#bookID').val(                   $(thisBook).find('.card-bookID')[0].innerHTML );
+  // SETTING THE 'BOOKRATING' HIDDEN INPUT TO THIS VALUE FORM THE API RESPONSE LIST
+  $('#bookRating').val(               $(thisBook).find('.card-rating')[0].innerHTML );
+
+
+
   return false;
 });

@@ -22,6 +22,8 @@ router.post('/groups/create/',(req,res,next)=>{
     const bookAuthor            = req.body.bookAuthor;
     const bookPagecount         = req.body.bookPagecount;
     const bookDescription       = req.body.bookDescription;
+    const bookID                = req.body.bookID;
+    const bookRating            = req.body.bookRating;
 
     Book.create({
 
@@ -29,7 +31,9 @@ router.post('/groups/create/',(req,res,next)=>{
       title:                    bookTitle,
       author:                   bookAuthor,
       pagecount:                bookPagecount,
-      description:              bookDescription
+      description:              bookDescription,
+      id:                       bookID,
+      rating:                   bookRating
 
     })
       .then((theBook)=>{

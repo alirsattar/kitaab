@@ -17,9 +17,6 @@ img {
   margin: 1rem auto;
   max-width: 100%; }
 
-p, h2, h3 {
-  padding: 10px; }
-
 .container {
   display: flex;
   flex-wrap: wrap;
@@ -28,13 +25,18 @@ p, h2, h3 {
   border-radius: 5px; }
 
 .card {
-  margin: 1rem;
+  margin: 10px;
   width: 30%;
   background: white;
   box-shadow: 2px 4px 25px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
   overflow: hidden;
-  transition: all .2s linear; }
+  transition: all .2s linear;
+  padding: 10px; }
+
+.card img {
+  max-height: 200px;
+  min-height: 200px; }
 
 .card:hover {
   box-shadow: 2px 8px 45px rgba(0, 0, 0, 0.15);
@@ -50,5 +52,13 @@ p, h2, h3 {
 @media screen and (min-width: 900px) {
   .card {
     flex: 1 1 calc(33% - 2rem); } }
+
+.left-half {
+  width: 30%;
+  float: left; }
+
+.right-half {
+  width: 70%;
+  float: right; }
 
 /*# sourceMappingURL=style.css.map */

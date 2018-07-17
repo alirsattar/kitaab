@@ -6,7 +6,9 @@ const bookSchema = new Schema({
     title:                  String,
     author:                 String,
     pagecount:              Number,
-    description:            String
+    description:            String,
+    id:                     String,
+    rating:                 String
     },
     {timestamps: true}
 );

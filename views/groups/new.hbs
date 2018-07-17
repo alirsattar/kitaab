@@ -1,31 +1,39 @@
-<h1>CREATE NEW GROUP PAGE</h1>
+<div class="left-half">
 
-<form action="/groups/create/" method="post">
+        <h1>CREATE NEW GROUP PAGE</h1>
 
-<label for="name">Group Name:</label>
-<input type="text" name="name" id="name">
-<br>
+        <form action="/groups/create/" method="post">
 
-{{!-- PUBLIC VS. PRIVATE IS COMMENTED OUT AS AN EXTRA FEATURE THAT I'LL ADD IF TIME PERMITS --}}
+        <label for="name">Group Name:</label>
+        <input type="text" name="name" id="name">
+        <br>
 
-{{!-- <p><input type="radio" name="public" value="true">Public<br>
-<input type="radio" name="public" value="false">Private<br> --}}
+        <p></p><button class="btn" type="submit">CREATE GROUP</button>
 
-<input id="groupOwner"type="hidden" name="groupOwner" value="">
 
-<input id="bookThumbnail"type="hidden" name="bookThumbnail" value="">
+        {{!-- PUBLIC VS. PRIVATE IS COMMENTED OUT AS AN EXTRA FEATURE THAT I'LL ADD IF TIME PERMITS --}}
 
-<input id="bookTitle"type="hidden" name="bookTitle" value="">
+        {{!-- <p><input type="radio" name="public" value="true">Public<br>
+        <input type="radio" name="public" value="false">Private<br> --}}
 
-<input id="bookAuthor"type="hidden" name="bookAuthor" value="">
+        <input id="bookID"type="hidden" name="bookID">
 
-<input id="bookPagecount"type="hidden" name="bookPagecount" value="">
+        <input id="bookRating"type="hidden" name="bookRating">
 
-<input id="bookDescription"type="hidden" name="bookDescription" value="">
+        <input id="bookThumbnail"type="hidden" name="bookThumbnail">
 
-{{!-- <input type="hidden" name="book" value="{{}}" --}}
+        <input id="bookTitle"type="hidden" name="bookTitle">
 
-<div class="find-book">
+        <input id="bookAuthor"type="hidden" name="bookAuthor">
+
+        <input id="bookPagecount"type="hidden" name="bookPagecount">
+
+        <input id="bookDescription"type="hidden" name="bookDescription">
+
+        </form>
+</div>
+
+<div class="find-book right-half">
         <div class="search-box">
 
             <h1>GET A BOOK</h1>
@@ -38,9 +46,5 @@
 
         <div class="container"></div>
 </div>
-
-<p></p><button type="submit">CREATE GROUP</button>
-
-</form>
 
 <script src='/javascripts/addBooks.js'></script>
