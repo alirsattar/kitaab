@@ -21,7 +21,7 @@
       <a href="/users/login">LOGIN</a>
       &nbsp;
       &nbsp;{{/unless}}      
-      {{#if user}}<a href="/">MY GROUPS</a>
+      {{#if user}}<a href="/users/groups">MY GROUPS</a>
       &nbsp;
       &nbsp;
       <a href="/groups/new">NEW GROUP</a>
@@ -29,10 +29,10 @@
       &nbsp;
       <a href="/">MY BOOKS</a>
       &nbsp;
-      &nbsp;{{/if}}
+      &nbsp;
       <a href="/logout">LOGOUT</a>
       &nbsp;
-      &nbsp;
+      &nbsp;{{/if}}
     </nav>
 
     {{{body}}}

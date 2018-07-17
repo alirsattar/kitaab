@@ -4,18 +4,13 @@ const User              = require('../models/user');
 const passport          = require('passport');
 const session           = require('express-session');
 const flash             = require('connect-flash');
+const ensure            = require('connect-ensure-login');
 
 // REQUIRING IN BCRYPT MODULE
 
 const bcrypt = require('bcryptjs');
 
 // GET ROUTE FOR SIGNUP PAGE
-
-router.get('/users/addbooks', (req,res,next)=>{
-
-    res.render('books/addBooks');
-
-});
 
 router.get('/users/signup', (req,res,next)=>{
 
@@ -94,6 +89,11 @@ router.get("/logout", (req, res, next) => {
       // cannot access session here
       res.redirect("/");
     });
+});
+
+/* GET ROUTE FOR MY GROUPS PAGE */
+router.get('/users/groups', ensure.ensureLoggedIn('/users/login'), (req, res, next) => {
+    res.render('groups/show');
   });
 
 

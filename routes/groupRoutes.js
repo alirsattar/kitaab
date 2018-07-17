@@ -2,6 +2,7 @@
 const express     = require('express');
 const router      = express.Router();
 const ensure      = require('connect-ensure-login');
+const User        = require('../models/user');
 const Book        = require('../models/book');
 const Group       = require('../models/group');
 const session     = require('express-session');
@@ -46,10 +47,23 @@ router.post('/groups/create/',(req,res,next)=>{
           memberComments:       []
 
         })
-          .then((response)=>{
+          .then(theGroup=>{
+              // console.log('the group: ', theGroup)
 
-            console.log(response);
-            res.redirect('/');
+            User.findById(theOwner)
+              .then(theUser=>{
+                console.log('before: ', theUser)
+                  theUser.groups.push(theGroup._id);
+                  theUser.save()
+                  .then((savedUser) => {
+                    console.log('saved: ', savedUser)
+                    res.redirect('/');
+                  })
+                  .catch(err => next(err));
+              })
+              .catch(err => next(err));
+
+            // console.log(response);
 
           })
           .catch((err)=>{
