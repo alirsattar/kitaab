@@ -22,7 +22,13 @@
       <a href="/users/login">LOGIN</a>
       &nbsp;
       &nbsp;{{/unless}}      
-      {{#if user}}<a href="/users/groups">MY GROUPS</a>
+      {{#if user}}<a href="/users/{{user._id}}">MY PROFILE</a>
+      &nbsp;
+      &nbsp;
+      <a href="/users/edit/{{user._id}}">EDIT PROFILE</a>
+      &nbsp;
+      &nbsp;
+      <a href="/users/groups">MY GROUPS</a>
       &nbsp;
       &nbsp;
       <a href="/groups/new">NEW GROUP</a>

@@ -98,7 +98,7 @@ router.get('/users/groups', ensure.ensureLoggedIn('/users/login'), (req, res, ne
     User.findById(req.user._id)
     .populate({path:'groups', populate: {path: 'currentBook'}})
     .then((theUser)=>{
-
+        console.log(theUser);
         res.render('users/userGroups', theUser);
 
     })
@@ -107,6 +107,26 @@ router.get('/users/groups', ensure.ensureLoggedIn('/users/login'), (req, res, ne
           console.log(err);
   
     });
+});
+
+// GET ROUTE FOR USER PROFILE PAGE
+
+router.get('/users/edit/:id', (req,res,next)=>{
+
+    const theID = req.params.id;
+    
+    res.render('users/userEdit');
+
+});
+
+// GET ROUTE FOR USER PROFILE PAGE
+
+router.get('/users/:id', (req,res,next)=>{
+
+    const theID = req.params.id;
+    
+    res.render('users/userProfile');
+
 });
 
 

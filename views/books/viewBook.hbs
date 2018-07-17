@@ -1,0 +1,22 @@
+<h1>BOOK VIEW TEST</h1>
+
+    <h1>{{title}}</h1>
+<div class="book-view">
+    
+    <div class="book-view-thumbnail">
+        
+        <p></p><img src="{{imageLinks.thumbnail}}">
+    
+    </div>
+
+    <div class="book-info">
+        
+        <p><b>Author(s):</b>{{#each authors}}<li>{{this}}</li>{{/each}}
+        <br><b>Publisher: </b>{{publisher}}
+        <br><b>Published: </b>{{publishedDate}}
+        <p>{{description}}
+
+    
+    </div>
+
+</div>

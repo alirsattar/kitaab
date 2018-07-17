@@ -5,7 +5,8 @@ const Schema                        = mongoose.Schema;
 const userSchema = new Schema({
     email:                  String,
     password:               String,
-    booksProgress:          [{type: Schema.Types.ObjectId, ref: 'Book'}, {progress: String}],
+    name:                   String,
+    booksProgress:          [],
     bookShelf:              [{type: Schema.Types.ObjectId, ref: 'Book'}],
     groups:                 [{type: Schema.Types.ObjectId, ref: 'Group'}],
     reviews:                [{type: Schema.Types.ObjectId, ref: 'Review'}],

@@ -12,6 +12,25 @@ router.get('/groups/new', ensure.ensureLoggedIn('/users/login'), (req, res, next
   res.render('groups/new');
 });
 
+/* GET ROUTE FOR NEW GROUP PAGE */
+router.get('/groups/edit/:id', ensure.ensureLoggedIn('/users/login'), (req, res, next) => {
+  
+  const theID = req.params.id;
+  
+  Group.findById(theID)
+    .then((theGroup)=>{
+
+      res.render('groups/editGroup', theGroup);
+
+    })
+    .catch((err)=>{
+
+      next(err);
+
+    });
+  
+});
+
 // POST ROUTE FOR NEW GROUP PAGE
 router.post('/groups/create/',(req,res,next)=>{
 
@@ -58,9 +77,14 @@ router.post('/groups/create/',(req,res,next)=>{
               .then(theUser=>{
                 console.log('before: ', theUser)
                   theUser.groups.push(theGroup._id);
+                  let bookId = theBook._id;
+                  let progress = 0;
+                  theUser.booksProgress.push({bookId, progress});
+                  console.log(theUser.booksProgress);
                   theUser.save()
                   .then((savedUser) => {
-                    console.log('saved: ', savedUser)
+                    console.log('saved: ', savedUser);
+               
                     res.redirect('/');
                   })
                   .catch(err => next(err));

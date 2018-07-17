@@ -105,7 +105,7 @@ app.use ((req, res, next)=>{
     res.locals.user = req.user; // !!!!!!
   }
   next();
-})
+});
 
 
 // INDEX/LANDING PAGE ROUTES
@@ -122,6 +122,9 @@ app.use('/', user);
 
 const groups = require('./routes/groupRoutes');
 app.use('/', groups);
+
+const books = require('./routes/bookRoutes');
+app.use('/', books);
 
 
 module.exports = app;

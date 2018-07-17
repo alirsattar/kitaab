@@ -56,4 +56,19 @@ html {
   width: 70%;
   float: right; }
 
+.groups-container {
+  display: flex;
+  clear: both; }
+
+.group-left {
+  float: left;
+  width: 30%; }
+
+.group-right {
+  float: right;
+  width: 70%; }
+
+.book-view {
+  display: flex; }
+
 /*# sourceMappingURL=style.css.map */
