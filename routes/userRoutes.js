@@ -5,6 +5,8 @@ const passport          = require('passport');
 const session           = require('express-session');
 const flash             = require('connect-flash');
 const ensure            = require('connect-ensure-login');
+const Book              = require('../models/book');
+const Group             = require('../models/group');
 
 // REQUIRING IN BCRYPT MODULE
 
@@ -84,7 +86,6 @@ router.post('/users/signup', (req,res,next)=>{
 // GET ROUTE FOR LOGGING OUT -- COULD ALSO BE A POST ROUTE
 
 router.get("/logout", (req, res, next) => {
-
     req.session.destroy((err) => {
       // cannot access session here
       res.redirect("/");
@@ -93,8 +94,20 @@ router.get("/logout", (req, res, next) => {
 
 /* GET ROUTE FOR MY GROUPS PAGE */
 router.get('/users/groups', ensure.ensureLoggedIn('/users/login'), (req, res, next) => {
-    res.render('groups/show');
-  });
+    
+    User.findById(req.user._id)
+    .populate({path:'groups', populate: {path: 'currentBook'}})
+    .then((theUser)=>{
+
+        res.render('users/userGroups', theUser);
+
+    })
+    .catch((err)=>{
+  
+          console.log(err);
+  
+    });
+});
 
 
 module.exports = router;

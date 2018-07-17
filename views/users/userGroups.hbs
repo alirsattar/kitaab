@@ -1,0 +1,41 @@
+<h1>MY GROUPS PAGE</h1>
+
+{{#each groups}}
+
+    <div class="groups-container">
+
+        <br><b>Group Name: </b>{{this.name}}</br>
+
+        <br><b>Group Creator: </b>{{this.owner}}</br>
+
+        <br><b>Current Book:</b>
+            <br><img src="{{this.currentBook.thumbnail}}">
+            <br>{{this.currentBook.title}}
+
+        <br><b>Members:</b>
+            {{#each groups.members}}
+            <li>{{this}}</li>
+            {{/each}}</br>
+
+        <br><b>Group Progress: </b>{{this.progress}} %</br>
+
+        <br><b>Member Reviews:</b>
+            {{#each groups.memberReviews}}
+            <li>{{this}}</li>
+            {{/each}}</br>
+
+        <br><b>Member Comments:</b>
+            {{#each groups.memberComments}}
+            <li>{{this}}</li>
+            {{/each}}</br>
+
+    <hr>
+    </div>
+
+{{/each}}
+
+{{!-- {{#each user}}
+
+<p>{{this.groups._id}}</p>
+
+{{/each}} --}}

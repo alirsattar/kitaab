@@ -3,12 +3,13 @@ const mongoose                      = require('mongoose');
 const Schema                        = mongoose.Schema;
 
 const userSchema = new Schema({
-    email:      String,
-    password:   String,
-    bookShelf:  [{type: Schema.Types.ObjectId, ref: 'Book'}],
-    groups:     [{type: Schema.Types.ObjectId, ref: 'Group'}],
-    reviews:    [{type: Schema.Types.ObjectId, ref: 'Review'}],
-    comments:   [{type: Schema.Types.ObjectId, ref: 'Comment'}]},
+    email:                  String,
+    password:               String,
+    booksProgress:          [{type: Schema.Types.ObjectId, ref: 'Book'}, {progress: String}],
+    bookShelf:              [{type: Schema.Types.ObjectId, ref: 'Book'}],
+    groups:                 [{type: Schema.Types.ObjectId, ref: 'Group'}],
+    reviews:                [{type: Schema.Types.ObjectId, ref: 'Review'}],
+    comments:               [{type: Schema.Types.ObjectId, ref: 'Comment'}]},
     {  
         usePushEach: true
     },
