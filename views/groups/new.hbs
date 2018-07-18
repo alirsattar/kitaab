@@ -8,6 +8,13 @@
         <input type="text" name="name" id="name">
         <br>
 
+        <label for="members">Add Members:</label>
+        <select multiple name="members" id="members" class="select-members">
+                {{#each allUsers}}
+                        <option value="{{this._id}}">{{this.name}}</option>
+                {{/each}}
+        </select>
+
         <p></p><button class="btn" type="submit">CREATE GROUP</button>
 
 

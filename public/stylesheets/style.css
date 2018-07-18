@@ -71,4 +71,15 @@ html {
 .book-view {
   display: flex; }
 
+.user-info {
+  float: right; }
+
+.top-nav {
+  width: 100%; }
+
+.select-members {
+  background-color: rgba(0, 0, 0, 0);
+  width: 200px;
+  height: 200px; }
+
 /*# sourceMappingURL=style.css.map */

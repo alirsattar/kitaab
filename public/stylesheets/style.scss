@@ -103,3 +103,20 @@ html {
 .book-info {
   // float:right;
 }
+
+.user-info {
+  float: right;
+  // align-self: flex-end;
+}
+
+.top-nav {
+  // display: flex;
+  // align-content: center;
+  width: 100%;
+}
+
+.select-members {
+  background-color: rgba(0,0,0,0);
+  width: 200px;
+  height: 200px;
+}

@@ -6,6 +6,7 @@ const userSchema = new Schema({
     email:                  String,
     password:               String,
     name:                   String,
+    avatar:                 {type: String, default:'../images/default-avatar.png'},
     booksProgress:          [],
     bookShelf:              [{type: Schema.Types.ObjectId, ref: 'Book'}],
     groups:                 [{type: Schema.Types.ObjectId, ref: 'Group'}],

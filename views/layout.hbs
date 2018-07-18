@@ -12,8 +12,8 @@
   </head>
   <body>
 
-    <nav>
-      <a href="/">HOME</a>
+    <nav class="top-nav">
+      <img src=""><a href="/">HOME</a>
       &nbsp;
       &nbsp;
       {{#unless user}}<a href="/users/signup">SIGNUP</a>
@@ -39,7 +39,8 @@
       &nbsp;
       <a href="/logout">LOGOUT</a>
       &nbsp;
-      &nbsp;{{/if}}
+      &nbsp;
+      <span class="user-info">{{user.name}}<img src="{{user.avatar}}" height="50" width="50"></span>{{/if}}
     </nav>
 
     {{{body}}}

@@ -41,6 +41,7 @@ router.post("/users/login", passport.authenticate("local", {
 
 router.post('/users/signup', (req,res,next)=>{
 
+    const theName = req.body.name;
     const theUsername = req.body.email;
     const thePassword = req.body.password;
 
@@ -66,7 +67,7 @@ router.post('/users/signup', (req,res,next)=>{
             
             const hashedPassword = bcrypt.hashSync(thePassword, salt);
 
-            User.create({email: theUsername, password: hashedPassword})
+            User.create({name: theName, email: theUsername, password: hashedPassword})
                 .then((user)=>{
                     req.login(user, (err)=>{
                         if(err){
@@ -97,8 +98,19 @@ router.get('/users/groups', ensure.ensureLoggedIn('/users/login'), (req, res, ne
     
     User.findById(req.user._id)
     .populate({path:'groups', populate: {path: 'currentBook'}})
+    .populate({path:'groups', populate: {path: 'members'}})
     .then((theUser)=>{
-        console.log(theUser);
+
+        console.log('-----------------------------------theUser',theUser);
+        
+        console.log('===================theUser.groups[1].members',theUser.groups[1].members);
+        
+        // .map((currentUser)=>{
+
+        //     currentUser.findById()
+
+        // })
+
         res.render('users/userGroups', theUser);
 
     })

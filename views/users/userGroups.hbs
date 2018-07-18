@@ -16,8 +16,8 @@
 
         <div class="group-right">
             <br><b>Members:</b>
-                {{#each groups.members}}
-                <li>{{this}}</li>
+                {{#each members}}
+                <li>{{this.name}}</li>
                 {{/each}}</br>
 
             <br><b>Group Progress: </b>{{this.progress}} %</br>
