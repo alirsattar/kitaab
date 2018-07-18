@@ -1,0 +1,35 @@
+<h1>MY BOOKSHELF PAGE</h1>
+
+<h2>CURRENTLY READING IN A GROUP:</h2>
+
+{{#each groups}}
+
+<div class="groups-container">
+    
+    <div class="group-left">
+    
+    <a href="/book/{{this.currentBook._id}}"><p><h3>{{this.currentBook.title}}</h3></p>
+
+    <p><img src="{{this.currentBook.thumbnail}}"></a>
+    </div>
+
+    <div class="group-right">
+
+        <p><b>Group Progress: </b> {{this.progress}} %</p>
+        <p><b>My Progress: </b> [TBD] %</p>
+        <p><b>My Comments: </b>[TBD]</p>
+        <p><b>My Reviews: </b>[TBD]</p>
+
+    </div>
+</div>
+    <hr>
+
+{{/each}}
+
+<div class="reading-list">
+
+    <h1>MY READING LIST</h1>
+
+    <h2>TBD</h2>
+
+</div>

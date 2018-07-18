@@ -9,17 +9,17 @@ const session     = require('express-session');
 
 /* GET ROUTE FOR NEW GROUP PAGE */
 router.get('/groups/new', ensure.ensureLoggedIn('/users/login'), (req, res, next) => {
-  
   User.find()
     .then((allUsers)=>{
-      
+      for (let i = 0; i < allUsers.length; i++){
+        if(allUsers[i].name === req.user.name){
+          allUsers[i].yes = true;
+        }
+      }
       res.render('groups/new', {allUsers: allUsers});
-
     })
     .catch((err)=>{
-
       next(err);
-
     });
 });
 
@@ -56,8 +56,9 @@ router.post('/groups/create/',(req,res,next)=>{
     const bookRating            = req.body.bookRating;
     const groupMembers          = req.body.members;
 
+    
     Book.create({
-
+      
       thumbnail:                bookThumbnail,
       title:                    bookTitle,
       author:                   bookAuthor,
@@ -65,9 +66,11 @@ router.post('/groups/create/',(req,res,next)=>{
       description:              bookDescription,
       id:                       bookID,
       rating:                   bookRating
-
+      
     })
-      .then((theBook)=>{
+    .then((theBook)=>{
+      
+        groupMembers.push(req.user._id);
 
         Group.create({
 

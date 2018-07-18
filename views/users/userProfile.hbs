@@ -1,3 +1,61 @@
 <h1>USER PROFILE PAGE</h1>
 
 <img src="{{user.avatar}}">
+
+<p>Name: {{user.name}}</p>
+
+<p>Email: {{user.email}}</p>
+
+{{!-- <p>My Progress:
+
+    {{#each user.booksProgress}}
+
+        <p>Title: {{this}}</p>
+        <br>Progress: {{this.progress}} %
+        <hr>
+
+    {{/each}}
+
+</p>
+
+<p>Bookshelf:</p>
+
+    {{#each user.bookShelf}}
+
+        <br>{{this.title}}
+
+    {{/each}}
+
+<p>Groups:</p>
+
+    {{#each groups}}
+
+        <p>{{this.name}} ({{this.members.length}} members)
+
+            {{#if this.members}}
+            
+                ({{#each this.members}}
+
+                    {{this.name}}
+
+                {{/each}})
+
+            {{/if}}
+
+        </p>
+
+    {{/each}}
+
+{{!-- <p>My Reviews:</p>
+
+    {{#each user.reviews.book.title}} --}}
+
+{{!-- <p>My Comments:</p>
+
+    {{#each user.comments}}
+
+        <p>{{this.book.title}}</p>
+
+        <p>{{this.content}}</p>
+
+    {{/each}} --}}

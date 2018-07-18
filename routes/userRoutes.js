@@ -7,10 +7,41 @@ const flash             = require('connect-flash');
 const ensure            = require('connect-ensure-login');
 const Book              = require('../models/book');
 const Group             = require('../models/group');
+const Comment           = require('../models/comment');
 
 // REQUIRING IN BCRYPT MODULE
 
 const bcrypt = require('bcryptjs');
+
+// API GET ROUTE FOR USERS, TO ENABLE DYNAMIC PAGE STUFF ON USER PROFILE PAGE
+
+// router.get('/api/user/:id', (req, res, next)=>{
+
+    
+
+// });
+
+// GET ROUTE FOR MY BOOKS PAGE
+
+router.get('/users/books/:id', ensure.ensureLoggedIn('/users/login'), (req,res,next)=>{
+
+    const theID = req.params.id;
+
+    User.findById(theID)
+    .populate({path: 'groups', populate: {path: 'currentBook'}})
+        .then((userBookInfo)=>{
+
+            console.log(userBookInfo);
+            res.render('users/myBooks', userBookInfo);
+
+        })
+        .catch((err)=>{
+
+            console.log(err);
+
+        });
+
+});
 
 // GET ROUTE FOR SIGNUP PAGE
 
@@ -114,7 +145,7 @@ router.get('/users/groups', ensure.ensureLoggedIn('/users/login'), (req, res, ne
 
 // GET ROUTE FOR USER PROFILE PAGE
 
-router.get('/users/edit/:id', (req,res,next)=>{
+router.get('/users/edit/:id', ensure.ensureLoggedIn('/users/login'), (req,res,next)=>{
 
     const theID = req.params.id;
     
@@ -124,12 +155,26 @@ router.get('/users/edit/:id', (req,res,next)=>{
 
 // GET ROUTE FOR USER PROFILE PAGE
 
-router.get('/users/:id', (req,res,next)=>{
+router.get('/users/:id', ensure.ensureLoggedIn('/users/login'), (req,res,next)=>{
 
     const theID = req.params.id;
-    
-    res.render('users/userProfile');
 
+    User.findById(theID)
+    .populate('bookShelf')
+    .populate({path: 'groups',              populate: {path: 'members'}})
+        .then((userInfo)=>{
+
+            // console.log(`-------------------------------------`,userInfo);
+            // console.log(userInfo.groups)
+            res.render('users/userProfile', userInfo);
+
+        })
+        .catch((err)=>{
+
+            console.log(err);
+
+        });
+    
 });
 
 
