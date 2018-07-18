@@ -7,6 +7,24 @@ const Book        = require('../models/book');
 const Group       = require('../models/group');
 const session     = require('express-session');
 
+/* GET ROUTE FOR GROUP DETAILS PAGE */
+router.get('/groups/show/:groupID', ensure.ensureLoggedIn('/users/login'), (req, res, next) => {
+  const theGroupID = req.params.groupID;
+  Group.findById(theGroupID)
+    .populate('owner')
+    .populate('currentBook')
+    .populate('memberComments')
+    // .populate('memberReviews')
+    .populate('members')
+    .populate('pastBooks')
+    .then((groupInfo)=>{
+      if(groupInfo.owner.name === req.user.name){
+          groupInfo.owner.yes = true;
+      }
+      res.render('groups/show', groupInfo);
+    });
+});
+
 /* GET ROUTE FOR NEW GROUP PAGE */
 router.get('/groups/new', ensure.ensureLoggedIn('/users/login'), (req, res, next) => {
   User.find()

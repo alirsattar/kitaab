@@ -16,26 +16,35 @@
 
         <div class="group-right">
             <br><b>Members:</b>
+                {{#if members}}
                 {{#each members}}
                 <li>{{this.name}}</li>
                 {{/each}}</br>
+                {{/if}}
+                {{#unless members}}
+                <br>Sorry, no members to show.
+                {{/unless}}
 
             <br><b>Group Progress: </b>{{this.progress}} %</br>
 
-            <br><b>Member Reviews:</b>
+            <br><b>Latest Review:</b>
+                {{#if groups.memberReviews}}
                 {{#each groups.memberReviews}}
                 <li>{{this.author}}</li>
                 <li>{{this.content}}</li>
                 {{/each}}</br>
+                {{/if}}
+                {{#unless groups.memberReviews}}
+                <p>No reviews to show.</p>
+                {{/unless}}
 
-            <br><b>Member Comments:</b>
+            <br><b>Latest Comment:</b>
                 {{#each groups.memberComments}}
                 <li>{{this}}</li>
                 {{/each}}</br>
 
-            <br><button class="edit-group"><a href="/groups/edit/{{this._id}}">EDIT GROUP</a></button>
-            
-            <p><button class="delete-group">DELETE GROUP</button>
+            <br><button><a href="/groups/show/{{this._id}}">GROUP PAGE</a></button>
+
         </div>
 
     </div>

@@ -1,3 +1,67 @@
-<h1>MY GROUPS PAGE</h1>
+<h1>{{name}}</h1>
 
-{{user}}
+<div class="groups-container">
+
+        <div class="group-left">
+
+            <br><b>Group Creator: </b>{{this.owner.name}}</br>
+
+            <br><b>Current Book:</b>
+                <br><a href="/book/{{this.currentBook._id}}"><img src="{{this.currentBook.thumbnail}}">
+                <br><b>{{this.currentBook.title}}</b></a>
+        </div>
+
+        <div class="group-right">
+            <br><b>Group Type:</b>
+                {{#if public}}
+
+                    Public
+
+                {{/if}}
+                {{#unless public}}
+
+                    Private
+
+                {{/unless}}
+
+            <p><b>Members:</b>
+                {{#if members}}
+                {{#each members}}
+                <li>{{this.name}}</li>
+                {{/each}}</br>
+                {{/if}}
+                {{#unless members}}
+                <br>Sorry, no members to show.
+                {{/unless}}
+
+            <p></p><b>Group Progress: </b>{{this.progress}} %</br>
+
+            <p></p><b>Latest Review:</b>
+                {{#if memberReviews}}
+                {{#each memberReviews}}
+                <li>{{this.author}}</li>
+                <li>{{this.content}}</li>
+                {{/each}}</br>
+                {{/if}}
+                {{#unless memberReviews}}
+                <p>No reviews to show.</p>
+                {{/unless}}
+
+            <p></p><b>Latest Comment:</b>
+                {{#if memberComments}}
+                {{#each memberComments}}
+                <li>{{this}}</li>
+                {{/each}}
+                {{/if}}
+                {{#unless memberComments}}
+                <p>No comments to show.</p>
+                {{/unless}}
+
+            <p><b>Manage Group:</b></p>
+            {{#if owner.yes}}
+            <br><button class="edit-group"><a href="/groups/edit/{{this._id}}">EDIT THIS GROUP</a></button>
+            &nbsp;&nbsp;&nbsp;<button>ADD MEMBERS</button>
+            &nbsp;&nbsp;&nbsp;<button class="delete-group">DELETE THIS GROUP</button>{{/if}}
+        </div>
+
+    </div>
