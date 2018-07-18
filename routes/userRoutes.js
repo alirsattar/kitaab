@@ -97,23 +97,14 @@ router.get("/logout", (req, res, next) => {
 router.get('/users/groups', ensure.ensureLoggedIn('/users/login'), (req, res, next) => {
     
     User.findById(req.user._id)
-    .populate({path:'groups', populate: {path: 'currentBook'}})
-    .populate({path:'groups', populate: {path: 'members'}})
-    .then((theUser)=>{
+    .populate({path:'groups', populate: {path: 'currentBook members owner'}})
+    // .populate({path:'groups', populate: {path: 'members'}})
+    // .populate({path:'groups', populate: {path: 'owner'}})
+        .then((theUser)=>{
 
-        console.log('-----------------------------------theUser',theUser);
-        
-        console.log('===================theUser.groups[1].members',theUser.groups[1].members);
-        
-        // .map((currentUser)=>{
+            res.render('users/userGroups', theUser);
 
-        //     currentUser.findById()
-
-        // })
-
-        res.render('users/userGroups', theUser);
-
-    })
+        })
     .catch((err)=>{
   
           console.log(err);

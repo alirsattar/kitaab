@@ -12,7 +12,7 @@ router.get('/groups/new', ensure.ensureLoggedIn('/users/login'), (req, res, next
   
   User.find()
     .then((allUsers)=>{
-      console.log('------------------------allUsers:', allUsers);
+      
       res.render('groups/new', {allUsers: allUsers});
 
     })
