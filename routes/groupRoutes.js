@@ -6,6 +6,15 @@ const User        = require('../models/user');
 const Book        = require('../models/book');
 const Group       = require('../models/group');
 const session     = require('express-session');
+const axios       = require('axios');
+
+// API POST ROUTE FOR DOING FANCY AJAX STUFF WITHOUT REFRESHING
+
+router.post('/api/groups/', (req,res,next)=>{
+
+  res.send(req.body);
+
+});
 
 /* GET ROUTE FOR GROUP DETAILS PAGE */
 router.get('/groups/show/:groupID', ensure.ensureLoggedIn('/users/login'), (req, res, next) => {

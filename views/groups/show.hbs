@@ -2,7 +2,7 @@
 
 <div class="groups-container">
 
-        <div class="group-left">
+        <div class="group-page-left">
 
             <br><b>Group Creator: </b>{{this.owner.name}}</br>
 
@@ -11,7 +11,7 @@
                 <br><b>{{this.currentBook.title}}</b></a>
         </div>
 
-        <div class="group-right">
+        <div class="group-page-middle">
             <br><b>Group Type:</b>
                 {{#if public}}
 
@@ -23,6 +23,29 @@
                     Private
 
                 {{/unless}}
+
+        <div class="group-page-right">
+
+            <div class="comments-container">
+            {{#if memberComments}}
+                {{#each memberComments}}
+                    <p>{{this.author}}</p>
+                    <p>{{this.content}}</p>
+                {{/each}}
+            {{/if}}
+            {{#unless memberComments}}
+                <p>No comments yet.</p>
+            {{/unless}}
+            </div>
+
+            <div class="comments-box-container">
+
+                <textarea id="comments-input" rows="10" cols="75"></textarea>
+                <button id="comment-button">SUBMIT COMMENT</button>
+
+            </div>
+
+        </div>
 
             <p><b>Members:</b>
                 {{#if members}}
@@ -69,3 +92,5 @@
         </div>
 
     </div>
+
+    <script src="/javascripts/groupsShow.js"></script>

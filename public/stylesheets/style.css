@@ -68,6 +68,17 @@ html {
   float: right;
   width: 40%; }
 
+.group-page-left {
+  float: left;
+  width: 30%; }
+
+.group-page-middle {
+  width: 30%; }
+
+.group-page-right {
+  float: right;
+  width: 30%; }
+
 .book-view {
   display: flex; }
 
