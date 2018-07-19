@@ -62,11 +62,11 @@ html {
 
 .group-left {
   float: left;
-  width: 30%; }
+  width: 40%; }
 
 .group-right {
   float: right;
-  width: 70%; }
+  width: 40%; }
 
 .book-view {
   display: flex; }
@@ -81,5 +81,13 @@ html {
   background-color: rgba(0, 0, 0, 0);
   width: 200px;
   height: 200px; }
+
+.mygroups-right {
+  float: right;
+  width: 50%; }
+
+.mygroups-left {
+  float: left;
+  width: 50%; }
 
 /*# sourceMappingURL=style.css.map */

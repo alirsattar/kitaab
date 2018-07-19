@@ -93,10 +93,7 @@ router.post('/groups/create/',(req,res,next)=>{
       
     })
     .then((theBook)=>{
-      
-        groupMembers.push(req.user._id);
-
-        Group.create({
+      Group.create({
 
           owner:                theOwner,
           name:                 groupName,
@@ -114,16 +111,12 @@ router.post('/groups/create/',(req,res,next)=>{
 
             User.findById(theOwner)
               .then(theUser=>{
-                console.log('before: ', theUser)
                   theUser.groups.push(theGroup._id);
                   let bookId = theBook._id;
                   theUser.bookProgress.push({book: bookId, progress: 0});
-                  console.log(theUser.booksProgress);
                   theUser.save()
                   .then((savedUser) => {
-                    console.log('saved: ', savedUser);
-               
-                    res.redirect('/');
+                    res.redirect('/users/groups');
                   })
                   .catch(err => next(err));
               })
