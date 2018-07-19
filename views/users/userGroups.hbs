@@ -8,8 +8,6 @@
 
     <div class="groups-container">
 
-        {{!-- {{this}} --}}
-
         <div class="group-left">
             <br><b>Group Name: </b>{{this.name}}</br>
 
@@ -61,64 +59,14 @@
 
 </div>
 
-    {{!-- <div class="groups-container">
-
-        <div class="group-left">
-            <br><b>Group Name: </b>{{this.name}}</br>
-
-            <br><b>Group Creator: </b>{{this.owner.name}}</br>
-
-            <br><b>Current Book:</b>
-                <br><a href="/book/{{this.currentBook._id}}"><img src="{{this.currentBook.thumbnail}}">
-                <br><b>{{this.currentBook.title}}</b></a>
-        </div>
-
-        <div class="group-right">
-            <br><b>Members:</b>
-                {{#if members}}
-                {{#each members}}
-                <li>{{this.name}}</li>
-                {{/each}}</br>
-                {{/if}}
-                {{#unless members}}
-                <br>Sorry, no members to show.
-                {{/unless}}
-
-            <br><b>Group Progress: </b>{{this.progress}} %</br>
-
-            <br><b>Latest Review:</b>
-                {{#if groups.memberReviews}}
-                {{#each groups.memberReviews}}
-                <li>{{this.author}}</li>
-                <li>{{this.content}}</li>
-                {{/each}}</br>
-                {{/if}}
-                {{#unless groups.memberReviews}}
-                <p>No reviews to show.</p>
-                {{/unless}}
-
-            <br><b>Latest Comment:</b>
-                {{#each groups.memberComments}}
-                <li>{{this}}</li>
-                {{/each}}</br>
-
-            <br><button><a href="/groups/show/{{this._id}}">GROUP PAGE</a></button>
-
-        </div>
-
-    </div>
-    <hr> --}}
-
-<h2>GROUPS I'M A MEMBER OF</h2>
+<h2>GROUPS I BELONG TO</h2>
 
 <div class="mygroups-right">
 
-    {{#each allGroups}}
-    {{#unless this.myGroup}}
+    {{#each groupsArray}}
+    {{#if this.included}}
 
     <div class="groups-container">
-
-        {{!-- {{this}} --}}
 
         <div class="group-left">
             <br><b>Group Name: </b>{{this.name}}</br>
@@ -166,13 +114,7 @@
     </div>
     <hr>
 
-    {{/unless}}
+    {{/if}}
     {{/each}}
 
 </div>
-
-{{!-- {{#each user}}
-
-<p>{{this.groups._id}}</p>
-
-{{/each}} --}}

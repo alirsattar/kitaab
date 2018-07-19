@@ -13,14 +13,6 @@ const Comment           = require('../models/comment');
 
 const bcrypt = require('bcryptjs');
 
-// API GET ROUTE FOR USERS, TO ENABLE DYNAMIC PAGE STUFF ON USER PROFILE PAGE
-
-// router.get('/api/user/:id', (req, res, next)=>{
-
-    
-
-// });
-
 // GET ROUTE FOR MY BOOKS PAGE
 
 router.get('/users/books/:id', ensure.ensureLoggedIn('/users/login'), (req,res,next)=>{
@@ -125,6 +117,7 @@ router.get("/logout", (req, res, next) => {
 });
 
 /* GET ROUTE FOR MY GROUPS PAGE */
+
 router.get('/users/groups', ensure.ensureLoggedIn('/users/login'), (req, res, next) => {
     
     Group.find()
@@ -132,24 +125,47 @@ router.get('/users/groups', ensure.ensureLoggedIn('/users/login'), (req, res, ne
     .populate('members')
     .populate('owner')
         .then((allGroups)=>{
-            // console.log('-----------------------------------------------SET SOMETHING TO TRUE', myGroup);
 
             for(i = 0; i < allGroups.length; i++){
                 if(allGroups[i].owner.name === req.user.name){
                     allGroups[i].myGroup = true;
                 }
             }
-            // console.log('-----------------------------------------allGroups',{allGroups:allGroups});
-            res.render('users/userGroups', {allGroups:allGroups});
-            console.log('-----------------------------------------------SET SOMETHING TO TRUE');
-            // console.log('---------------------------------------',allGroups);
 
+            Group.find()
+                .populate('currentBook')
+                .populate('members')
+                .populate('owner')
+                .then((groupsArray)=>{
+
+                    console.log(groupsArray);
+
+                    for(let i = 0; i < groupsArray.length; i++){
+
+                        for(let j = 0; j < groupsArray[i].members.length; j++)
+
+                            if(groupsArray[i].members[j].name === req.user.name){
+                            
+                                console.log('-----------------------------------------------FOUND A GROUP I AM IN');
+                                console.log(groupsArray[i].name);
+                                groupsArray[i].included = true;
+
+                        }
+                    }
+                    res.render('users/userGroups', {allGroups:allGroups,groupsArray:groupsArray});
+                })
+                .catch((err)=>{
+
+                    console.log(err);
+
+                });
         })
         .catch((err)=>{
 
             console.log(err);
 
         });
+});
     
     // User.findById(req.user._id)
     // .populate({path:'groups', populate: {path: 'currentBook members owner'}})
@@ -165,7 +181,6 @@ router.get('/users/groups', ensure.ensureLoggedIn('/users/login'), (req, res, ne
     //       console.log(err);
   
     // });
-});
 
 // GET ROUTE FOR USER PROFILE PAGE
 
