@@ -16,9 +16,19 @@
     <div class="group-right">
 
         <p><b>Group Progress: </b> {{this.progress}} %</p>
-        <p><b>My Progress: </b> [TBD] %</p>
-        <p><b>My Comments: </b>[TBD]</p>
-        <p><b>My Reviews: </b>[TBD]</p>
+        <p><b>My Progress: </b>
+        <br>[TBD]
+        <p><b>My Comments on This Book:</b></p>
+            {{#if memberComments}}
+            {{#each memberComments}}
+                <p>"{{this.content}}"</p>
+            {{/each}}
+            {{/if}}
+            {{#unless memberComments}}
+                <p>I haven't made any comments on this book yet.</p>
+            {{/unless}}
+        <p><b>My Reviews: </b>
+        <br>[TBD]
 
     </div>
 </div>

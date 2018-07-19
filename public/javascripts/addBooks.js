@@ -15,7 +15,7 @@ $('#get-book').click(function(){
         if (theBooks.data.items[i].volumeInfo.imageLinks && theBooks.data.items[i].volumeInfo.title && theBooks.data.items[i].volumeInfo.authors && theBooks.data.items[i].id && theBooks.data.items[i].volumeInfo.averageRating && theBooks.data.items[i].volumeInfo.pageCount && theBooks.data.items[i].volumeInfo.description){
           const bookDescription = theBooks.data.items[i].volumeInfo.description;
           const bookCard = `
-            <div class="card">
+            <div class="book-card">
             <img class="card-img" src="${theBooks.data.items[i].volumeInfo.imageLinks.thumbnail}">
             <h2 class="card-title">${theBooks.data.items[i].volumeInfo.title}</h2>
             <p><b>Author: </b><span class="card-author">${theBooks.data.items[i].volumeInfo.authors[0]}</span></p>
@@ -26,7 +26,7 @@ $('#get-book').click(function(){
             <button class="select-book">CHOOSE THIS BOOK</button>
             </div>
           `;
-          $('.container').append(bookCard);
+          $('.bookresults-container').append(bookCard);
         }
       }
     })

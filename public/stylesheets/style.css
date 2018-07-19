@@ -12,14 +12,14 @@ html {
   max-width: 1200px;
   margin: 0 auto; }
 
-.container {
+.bookresults-container {
   display: flex;
   flex-wrap: wrap;
   background-color: #D5D5D5;
   min-height: 200px;
   border-radius: 5px; }
 
-.card {
+.book-card {
   margin: 10px;
   width: 30%;
   background: white;
@@ -29,11 +29,13 @@ html {
   transition: all .2s linear;
   padding: 10px; }
 
-.card img {
+.book-card img {
   max-height: 200px;
-  min-height: 200px; }
+  min-height: 200px;
+  max-width: 150px;
+  min-width: 150px; }
 
-.card:hover {
+.book-card:hover {
   box-shadow: 2px 8px 45px rgba(0, 0, 0, 0.15);
   transform: translate3D(0, -2px, 0); }
 
@@ -108,5 +110,9 @@ html {
 .otherprofiles-right {
   float: right;
   width: 70%; }
+
+.index-header {
+  background-image: url("/images/library_background.jpg");
+  background-position: center; }
 
 /*# sourceMappingURL=style.css.map */

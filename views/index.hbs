@@ -1,21 +1,25 @@
-<h1>INDEX PAGE</h1>
+<div class="container-fluid index-header">
+    
+        <h1>INDEX PAGE</h1>
 
-{{#unless user}}
+    {{#unless user}}
 
-<p><h2>LOG IN TO SEE A SURPRISE !</h2>
+    <p><h2>LOG IN TO SEE A SURPRISE !</h2>
 
-{{/unless}}
+    {{/unless}}
 
-{{#if logoutMessage}}
+    {{#if logoutMessage}}
 
-<h2>SUCCESSFULLY LOGGED OUT</h2>
+    <h2>SUCCESSFULLY LOGGED OUT</h2>
 
-{{/if}}
+    {{/if}}
 
-{{#if user}}
+    {{#if user}}
 
-<h1>CONGRATS, YOU'RE LOGGED IN! HERE'S A SLOTH:</h1>
+    <h1>CONGRATS, YOU'RE LOGGED IN! HERE'S A SLOTH:</h1>
 
-<img src="https://falconvoice.com/wp-content/uploads/2017/10/sloth-03.jpg">
+    <img src="https://falconvoice.com/wp-content/uploads/2017/10/sloth-03.jpg">
 
-{{/if}}
+    {{/if}}
+
+</div>

@@ -35,7 +35,7 @@ router.get('/users/books/:id', ensure.ensureLoggedIn('/users/login'), (req,res,n
     const theID = req.params.id;
 
     User.findById(theID)
-    .populate({path: 'groups', populate: {path: 'currentBook'}})
+    .populate({path: 'groups', populate: {path: 'currentBook memberComments'}})
         .then((userBookInfo)=>{
 
             console.log(userBookInfo);
