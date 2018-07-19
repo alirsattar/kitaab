@@ -50,11 +50,11 @@ router.get('/groups/edit/:id', ensure.ensureLoggedIn('/users/login'), (req, res,
   Group.findById(theID)
     .then((theGroup)=>{
       
-      for (let i = 0; i < allUsers.length; i++){
-        if(allUsers[i].name === req.user.name){
-          allUsers[i].yes = true;
-        }
-      }
+      // for (let i = 0; i < allUsers.length; i++){
+      //   if(allUsers[i].name === req.user.name){
+      //     allUsers[i].yes = true;
+      //   }
+      // }
       res.render('groups/editGroup', theGroup);
 
     })
