@@ -27,7 +27,7 @@
             <p><b>Members:</b>
                 {{#if members}}
                 {{#each members}}
-                <li>{{this.name}}</li>
+                <li><a href="/userprofile/{{this._id}}">{{this.name}}</a></li>
                 {{/each}}</br>
                 {{/if}}
                 {{#unless members}}

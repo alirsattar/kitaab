@@ -1,22 +1,24 @@
 <h1>USER PROFILE PAGE</h1>
 
+{{userInfo}}
+
 <img src="{{avatar}}">
 
-<p>Name: {{name}}</p>
+<p><b>Name: </b>{{name}}</p>
 
-<p>Email: {{email}}</p>
+<p><b>Email: </b>{{email}}</p>
 
-<p>Groups:</p>
+<p><b>Groups:</b></p>
     {{#each groups}}
         <li><a href="/groups/show/{{this._id}}">{{this.name}}</a></li>
     {{/each}}
 
     <hr>
 
-<p>Comments:</p>
+<p><b>Comments:</b></p>
     {{#if comments}}
     {{#each comments}}
-        <p>Group: {{this.group.name}}
+        <p><b>Group: </b>{{this.group.name}}
         <br>"{{this.content}}"
     {{/each}}
     {{/if}}
@@ -26,7 +28,7 @@
 
     <hr>
 
-<p>Bookshelf:</p>
+<p><b>Bookshelf:</b></p>
 <br>Coming soon!
 
 {{!-- <p>My Progress:

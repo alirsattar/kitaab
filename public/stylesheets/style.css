@@ -101,4 +101,12 @@ html {
   float: left;
   width: 50%; }
 
+.otherprofiles-left {
+  float: left;
+  width: 30%; }
+
+.otherprofiles-right {
+  float: right;
+  width: 70%; }
+
 /*# sourceMappingURL=style.css.map */

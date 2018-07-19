@@ -215,10 +215,12 @@ router.get('/users/:id', ensure.ensureLoggedIn('/users/login'), (req,res,next)=>
 
     User.findById(theID)
     .populate('bookShelf')
-    .populate({path: 'groups',              populate: {path: 'members'}})
+    .populate({path: 'groups', populate: {path: 'members'}})
+    .populate('comments')
+    .populate({path: 'comments', populate: {path: 'group'}})
         .then((userInfo)=>{
 
-            // console.log(`-------------------------------------`,userInfo);
+            console.log(`-------------------------------------`,userInfo);
             // console.log(userInfo.groups)
             res.render('users/userProfile', userInfo);
 
