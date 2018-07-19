@@ -13,6 +13,21 @@ const Comment           = require('../models/comment');
 
 const bcrypt = require('bcryptjs');
 
+// GET ROUTE FOR ANY USER'S PROFILE PAGE
+
+router.get('/userprofile/:userID', (req,res,next)=>{
+    const userID = req.params.userID;
+    User.findById(userID)
+        .populate('groups')
+        .populate({path:'comments', populate: {path: 'group'}})
+        .then((userInfo)=>{
+            res.render('users/userView',userInfo);
+        })
+        .catch((err)=>{
+            console.log(err)
+        });
+});
+
 // GET ROUTE FOR MY BOOKS PAGE
 
 router.get('/users/books/:id', ensure.ensureLoggedIn('/users/login'), (req,res,next)=>{

@@ -1,0 +1,30 @@
+<h1>OTHER USER PROFILE PAGE</h1>
+
+<img src="{{avatar}}">
+
+<p>Name: {{name}}</p>
+
+<p>Email: {{email}}</p>
+
+<p>Groups:</p>
+    {{#each groups}}
+        <li><a href="/groups/show/{{this._id}}">{{this.name}}</a></li>
+    {{/each}}
+
+    <hr>
+
+<p>Comments:</p>
+    {{#if comments}}
+    {{#each comments}}
+        <p>Group: {{this.group.name}}
+        <br>"{{this.content}}"
+    {{/each}}
+    {{/if}}
+    {{#unless comments}}
+    <p>This user hasn't made any comments yet.</p>
+    {{/unless}}
+
+    <hr>
+
+<p>Bookshelf:</p>
+<br>Coming soon!

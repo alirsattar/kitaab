@@ -7,31 +7,69 @@ const Book        = require('../models/book');
 const Group       = require('../models/group');
 const session     = require('express-session');
 const axios       = require('axios');
+const Comment     = require('../models/comment');
 
 // API POST ROUTE FOR DOING FANCY AJAX STUFF WITHOUT REFRESHING
 
-router.post('/api/groups/', (req,res,next)=>{
+router.post('/groups/:groupID/comment/:bookID/submit', (req,res,next)=>{
 
-  res.send(req.body);
+  // res.send(req.body);
 
+  const theGroupID     = req.params.groupID;
+  const theBookID      = req.params.bookID;
+  const theAuthor      = req.user._id;
+  const theContent     = req.body.content;
+  const theNewComment = new Comment({
+    group:        theGroupID,
+    book:         theBookID,
+    author:       theAuthor,
+    content:      theContent
+  });
+  Comment.create(theNewComment)
+    .then((theSavedComment)=>{
+      Group.findByIdAndUpdate(theGroupID, {$push: {memberComments: theSavedComment}})
+        .then((response)=>{
+          User.findByIdAndUpdate(theAuthor, {$push: {comments: theSavedComment}})
+            .then((response)=>{
+              console.log(response);
+              res.redirect(`/groups/show/${theGroupID}`);
+            })
+            .catch((err)=>{
+              console.log(err);
+            });
+        })
+        .catch((err)=>{
+          console.log(err);
+        });
+    })
+    .catch((err)=>{
+      console.log(err)
+    });
 });
 
 /* GET ROUTE FOR GROUP DETAILS PAGE */
 router.get('/groups/show/:groupID', ensure.ensureLoggedIn('/users/login'), (req, res, next) => {
   const theGroupID = req.params.groupID;
-  Group.findById(theGroupID)
-    .populate('owner')
-    .populate('currentBook')
-    .populate('memberComments')
-    // .populate('memberReviews')
-    .populate('members')
-    .populate('pastBooks')
-    .then((groupInfo)=>{
-      if(groupInfo.owner.name === req.user.name){
-          groupInfo.owner.yes = true;
-      }
-      res.render('groups/show', groupInfo);
-    });
+  
+  // User.find()
+  // .then((listOfAllUsers)=>{
+    Group.findById(theGroupID)
+      .populate('owner')
+      .populate('currentBook')
+      .populate({path: 'memberComments', populate: {path: 'author'}})
+      // .populate('memberReviews')
+      .populate('members')
+      .populate('pastBooks')
+      .then((groupInfo)=>{
+        if(groupInfo.owner.name === req.user.name){
+            groupInfo.owner.yes = true;
+        }
+        res.render('groups/show', groupInfo);
+      });
+  // })
+  // .catch((err)=>{
+  //   console.log(err);
+  // });
 });
 
 /* GET ROUTE FOR NEW GROUP PAGE */

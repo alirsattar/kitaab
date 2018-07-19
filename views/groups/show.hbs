@@ -24,29 +24,6 @@
 
                 {{/unless}}
 
-        <div class="group-page-right">
-
-            <div class="comments-container">
-            {{#if memberComments}}
-                {{#each memberComments}}
-                    <p>{{this.author}}</p>
-                    <p>{{this.content}}</p>
-                {{/each}}
-            {{/if}}
-            {{#unless memberComments}}
-                <p>No comments yet.</p>
-            {{/unless}}
-            </div>
-
-            <div class="comments-box-container">
-
-                <textarea id="comments-input" rows="10" cols="75"></textarea>
-                <button id="comment-button">SUBMIT COMMENT</button>
-
-            </div>
-
-        </div>
-
             <p><b>Members:</b>
                 {{#if members}}
                 {{#each members}}
@@ -59,21 +36,10 @@
 
             <p></p><b>Group Progress: </b>{{this.progress}} %</br>
 
-            <p></p><b>Latest Review:</b>
-                {{#if memberReviews}}
-                {{#each memberReviews}}
-                <li>{{this.author}}</li>
-                <li>{{this.content}}</li>
-                {{/each}}</br>
-                {{/if}}
-                {{#unless memberReviews}}
-                <p>No reviews to show.</p>
-                {{/unless}}
-
-            <p></p><b>Latest Comment:</b>
+            <p></p><b>Latest Comment By:</b>
                 {{#if memberComments}}
                 {{#each memberComments}}
-                <li>{{this}}</li>
+                <li><a href="/users/">{{this.author.name}}</a></li>
                 {{/each}}
                 {{/if}}
                 {{#unless memberComments}}
@@ -91,6 +57,29 @@
             {{/unless}}
         </div>
 
-    </div>
+        <div class="group-page-right">
+
+            <div class="comments-container">
+                {{#if memberComments}}
+                    {{#each memberComments}}
+                        <p>{{this.author.name}}</p>
+                        <p>{{this.content}}</p>
+                    {{/each}}
+                {{/if}}
+                {{#unless memberComments}}
+                    <p>No comments yet.</p>
+                {{/unless}}
+            </div>
+
+            <div class="comments-box-container">
+                <form action="/groups/{{_id}}/comment/{{currentBook._id}}/submit" method="post">
+                    <textarea id="comments-input" rows="10" cols="75" name="content"></textarea>
+                    <button type="submit" id="comment-button">SUBMIT COMMENT</button>
+                </form>
+            </div>
+
+        </div>
+
+</div>
 
     <script src="/javascripts/groupsShow.js"></script>
