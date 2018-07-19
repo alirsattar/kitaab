@@ -127,20 +127,44 @@ router.get("/logout", (req, res, next) => {
 /* GET ROUTE FOR MY GROUPS PAGE */
 router.get('/users/groups', ensure.ensureLoggedIn('/users/login'), (req, res, next) => {
     
-    User.findById(req.user._id)
-    .populate({path:'groups', populate: {path: 'currentBook members owner'}})
-    // .populate({path:'groups', populate: {path: 'members'}})
-    // .populate({path:'groups', populate: {path: 'owner'}})
-        .then((theUser)=>{
+    Group.find()
+    .populate('currentBook')
+    .populate('members')
+    .populate('owner')
+        .then((allGroups)=>{
+            // console.log('-----------------------------------------------SET SOMETHING TO TRUE', myGroup);
 
-            res.render('users/userGroups', theUser);
+            for(i = 0; i < allGroups.length; i++){
+                if(allGroups[i].owner.name === req.user.name){
+                    allGroups[i].myGroup = true;
+                }
+            }
+            // console.log('-----------------------------------------allGroups',{allGroups:allGroups});
+            res.render('users/userGroups', {allGroups:allGroups});
+            console.log('-----------------------------------------------SET SOMETHING TO TRUE');
+            // console.log('---------------------------------------',allGroups);
 
         })
-    .catch((err)=>{
+        .catch((err)=>{
+
+            console.log(err);
+
+        });
+    
+    // User.findById(req.user._id)
+    // .populate({path:'groups', populate: {path: 'currentBook members owner'}})
+    // // .populate({path:'groups', populate: {path: 'members'}})
+    // // .populate({path:'groups', populate: {path: 'owner'}})
+    //     .then((theUser)=>{
+    //         console.log(theUser);
+    //         res.render('users/userGroups', theUser);
+
+    //     })
+    // .catch((err)=>{
   
-          console.log(err);
+    //       console.log(err);
   
-    });
+    // });
 });
 
 // GET ROUTE FOR USER PROFILE PAGE

@@ -61,7 +61,11 @@
             {{#if owner.yes}}
             <br><button class="edit-group"><a href="/groups/edit/{{this._id}}">EDIT THIS GROUP</a></button>
             &nbsp;&nbsp;&nbsp;<button>ADD MEMBERS</button>
-            &nbsp;&nbsp;&nbsp;<button class="delete-group">DELETE THIS GROUP</button>{{/if}}
+            &nbsp;&nbsp;&nbsp;<button class="delete-group">DELETE THIS GROUP</button>
+            {{/if}}
+            {{#unless owner.yes}}
+            <p>Only this group's owner ({{owner.name}}) can make changes to the group.
+            {{/unless}}
         </div>
 
     </div>

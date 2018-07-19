@@ -34,6 +34,7 @@ router.get('/groups/new', ensure.ensureLoggedIn('/users/login'), (req, res, next
           allUsers[i].yes = true;
         }
       }
+      console.log(allUsers);
       res.render('groups/new', {allUsers: allUsers});
     })
     .catch((err)=>{
@@ -48,7 +49,12 @@ router.get('/groups/edit/:id', ensure.ensureLoggedIn('/users/login'), (req, res,
   
   Group.findById(theID)
     .then((theGroup)=>{
-
+      
+      for (let i = 0; i < allUsers.length; i++){
+        if(allUsers[i].name === req.user.name){
+          allUsers[i].yes = true;
+        }
+      }
       res.render('groups/editGroup', theGroup);
 
     })
@@ -111,8 +117,7 @@ router.post('/groups/create/',(req,res,next)=>{
                 console.log('before: ', theUser)
                   theUser.groups.push(theGroup._id);
                   let bookId = theBook._id;
-                  let progress = 0;
-                  theUser.booksProgress.push({bookId, progress});
+                  theUser.bookProgress.push({book: bookId, progress: 0});
                   console.log(theUser.booksProgress);
                   theUser.save()
                   .then((savedUser) => {
