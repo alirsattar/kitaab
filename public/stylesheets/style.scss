@@ -165,13 +165,30 @@ html {
 //   margin-left: 100px;
 // }
 
-// .index-header {
-//   background-image: url('/images/library_background.jpg');
-//   background-position: center;
-//   height: 100vh;
-//   color: white;
-//   padding-top: 50px;
-// }
+.index-header {
+  background-image: url('/images/library_background.jpg');
+  background-position: center;
+  height: 100vh;
+  color: white;
+  // padding-top: 50px;
+}
+
+.index-header {
+  font-family: 'Kaushan Script', cursive;
+  // display: flex;
+  align-content: center;
+}
+
+.splash-title {
+  font-size: 10em;
+  padding-top: 25vh;
+  padding-left: 15vw;
+}
+
+.splash-subtitle {
+  font-size: 2.5em;
+  padding-left: 20vw;
+}
 
 // .layout-nav {
 //   background-color: rgba(0,0,0,0);
@@ -207,23 +224,6 @@ html {
 //   font-size: 1.5em;
 // }
 
-// .index-header {
-//   font-family: 'Kaushan Script', cursive;
-//   display: flex;
-//   align-content: center;
-// }
-
-// .splash-title {
-//   font-size: 15em;
-//   padding-top: 25vh;
-//   padding-left: 15vw;
-// }
-
 // .kitaab-title-container {
 //   // width: 100%;
-// }
-
-// .splash-subtitle {
-//   font-size: 5em;
-//   padding-left: 15vw;
 // }

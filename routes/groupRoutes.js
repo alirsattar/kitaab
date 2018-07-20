@@ -81,7 +81,7 @@ router.get('/groups/new', ensure.ensureLoggedIn('/users/login'), (req, res, next
           allUsers[i].yes = true;
         }
       }
-      console.log(allUsers);
+      // console.log(allUsers);
       res.render('groups/new', {allUsers: allUsers});
     })
     .catch((err)=>{
@@ -164,7 +164,7 @@ router.post('/groups/create/',(req,res,next)=>{
                   theUser.save()
                   .then((savedUser) => {
                     
-                    User.findByIdAndUpdate(groupMembers, {$push: {groups: theGroup._id}})
+                    User.updateMany({_id: groupMembers}, {$push: {groups: theGroup._id}})
                       .then((updatedUsers)=>{
 
                         console.log(updatedUsers);

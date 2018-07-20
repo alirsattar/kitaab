@@ -39,12 +39,10 @@ $(document).on('click','.select-book',function(e){
     var arr = [].slice.call(htmlCollection);
     return arr;
   }
+  
+  const theButton = $(this);
   const thisBook = $(this).parent();
   turnCollectionToArray(thisBook);
-
-  console.log(thisBook);
-  
-  console.log('-----------------------',$(thisBook).find('.card-img')[0].src );
  
   // WORKING CONSOLE.LOGS TO ACCESS INFO INSIDE THE CARDS
   // console.log(thisBook);
@@ -69,7 +67,12 @@ $(document).on('click','.select-book',function(e){
   // SETTING THE 'BOOKRATING' HIDDEN INPUT TO THIS VALUE FORM THE API RESPONSE LIST
   $('#bookRating').val(               $(thisBook).find('.card-rating')[0].innerHTML );
 
+  
+  $('.btn-success').text('CHOOSE THIS BOOK');
+  $('.btn-success').removeClass('btn-success');
 
+  $(this).addClass('btn-success');
+  $(this).text('BOOK SELECTED');
 
   return false;
 });

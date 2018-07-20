@@ -97,4 +97,23 @@ html {
   float: right;
   width: 70%; }
 
+.index-header {
+  background-image: url("/images/library_background.jpg");
+  background-position: center;
+  height: 100vh;
+  color: white; }
+
+.index-header {
+  font-family: 'Kaushan Script', cursive;
+  align-content: center; }
+
+.splash-title {
+  font-size: 10em;
+  padding-top: 25vh;
+  padding-left: 15vw; }
+
+.splash-subtitle {
+  font-size: 2.5em;
+  padding-left: 20vw; }
+
 /*# sourceMappingURL=style.css.map */
