@@ -163,7 +163,20 @@ router.post('/groups/create/',(req,res,next)=>{
                   theUser.bookProgress.push({book: bookId, progress: 0});
                   theUser.save()
                   .then((savedUser) => {
-                    res.redirect('/users/groups');
+                    
+                    User.findByIdAndUpdate(groupMembers, {$push: {groups: theGroup._id}})
+                      .then((updatedUsers)=>{
+
+                        console.log(updatedUsers);
+
+                        res.redirect('/users/groups');
+
+                      })
+                      .catch((err)=>{
+
+                        console.log(err);
+
+                      })
                   })
                   .catch(err => next(err));
               })
