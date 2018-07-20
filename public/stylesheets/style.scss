@@ -120,12 +120,6 @@ html {
   // align-self: flex-end;
 }
 
-.top-nav {
-  // display: flex;
-  // align-content: center;
-  width: 100%;
-}
-
 .select-members {
   background-color: rgba(0,0,0,0);
   width: 200px;
@@ -156,7 +150,65 @@ html {
   width: 70%;
 }
 
-.index-header {
-  background-image: url('/images/library_background.jpg');
-  background-position: center;
-}
+// .index-header {
+//   background-image: url('/images/library_background.jpg');
+//   background-position: center;
+//   height: 100vh;
+//   color: white;
+//   padding-top: 50px;
+// }
+
+// .layout-nav {
+//   background-color: rgba(0,0,0,0);
+//   height: 0;
+//   color: white;
+//   // height: 10vh;
+//   display: flex;
+//   justify-content: space-between;
+// }
+
+// .layout-nav a {
+//   padding-top: 20px;
+// }
+
+// .left-links{
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: space-evenly;
+// }
+
+// .left-links a {
+//   color: white;
+//   font-size: 1.5em;
+// }
+
+// .user-name {
+//   color: white;
+//   padding-top: 20px;
+// }
+
+// .user-name a {
+//   color: white;
+//   font-size: 1.5em;
+// }
+
+// .index-header {
+//   font-family: 'Kaushan Script', cursive;
+//   display: flex;
+//   align-content: center;
+// }
+
+// .splash-title {
+//   font-size: 15em;
+//   padding-top: 25vh;
+//   padding-left: 15vw;
+// }
+
+// .kitaab-title-container {
+//   // width: 100%;
+// }
+
+// .splash-subtitle {
+//   font-size: 5em;
+//   padding-left: 15vw;
+// }

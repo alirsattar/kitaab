@@ -7,41 +7,42 @@
     <script src="/javascripts/axios.js"></script>
     <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="/javascripts/bootstrap.min.js"></script>
+    
   </head>
   <body>
 
-    <div class="container-fluid">
-      <nav class="top-nav">
-        <img src=""><a href="/">HOME</a>
-        &nbsp;
-        &nbsp;
-        {{#unless user}}<a href="/users/signup">SIGNUP</a>
-        &nbsp;
-        &nbsp;
-        <a href="/users/login">LOGIN</a>
-        &nbsp;
-        &nbsp;{{/unless}}      
-        {{#if user}}<a href="/users/{{user._id}}">MY PROFILE</a>
-        &nbsp;
-        &nbsp;
-        <a href="/users/edit/{{user._id}}">EDIT PROFILE</a>
-        &nbsp;
-        &nbsp;
-        <a href="/users/groups">MY GROUPS</a>
-        &nbsp;
-        &nbsp;
-        <a href="/groups/new">NEW GROUP</a>
-        &nbsp;
-        &nbsp;
-        <a href="/users/books/{{user._id}}">MY BOOKSHELF</a>
-        &nbsp;
-        &nbsp;
-        <a href="/logout">LOGOUT</a>
-        &nbsp;
-        &nbsp;
-        <span class="user-info">{{user.name}}<img src="{{user.avatar}}" height="50" width="50"></span>{{/if}}
-      </nav>
+
+  <nav class="navbar-expand-lg">
+    <div class="left-links">
+      <a href="/">HOME</a>
+      &nbsp;
+      &nbsp;
+      {{#unless user}}<a href="/users/signup">SIGNUP</a>
+      &nbsp;
+      &nbsp;
+      <a href="/users/login">LOGIN</a>{{/unless}}
+      &nbsp;
+      &nbsp;
+      {{#if user}}<a href="/users/{{user._id}}">MY PROFILE</a>
+      &nbsp;
+      &nbsp;
+      <a href="/users/edit/{{user._id}}">EDIT PROFILE</a>
+      &nbsp;
+      &nbsp;
+      <a href="/users/groups">MY GROUPS</a>
+      &nbsp;
+      &nbsp;
+      <a href="/groups/new">NEW GROUP</a>
+      &nbsp;
+      &nbsp;
+      <a href="/users/books/{{user._id}}">MY BOOKSHELF</a>
     </div>
+    <div class="user-name">
+      <a href="/logout">LOGOUT</a>{{/if}}
+    </div>
+  </nav>
+
 
     {{{body}}}
 

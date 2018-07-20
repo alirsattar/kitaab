@@ -87,9 +87,6 @@ html {
 .user-info {
   float: right; }
 
-.top-nav {
-  width: 100%; }
-
 .select-members {
   background-color: rgba(0, 0, 0, 0);
   width: 200px;
@@ -110,9 +107,5 @@ html {
 .otherprofiles-right {
   float: right;
   width: 70%; }
-
-.index-header {
-  background-image: url("/images/library_background.jpg");
-  background-position: center; }
 
 /*# sourceMappingURL=style.css.map */

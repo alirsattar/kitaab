@@ -134,51 +134,36 @@ router.get("/logout", (req, res, next) => {
 /* GET ROUTE FOR MY GROUPS PAGE */
 
 router.get('/users/groups', ensure.ensureLoggedIn('/users/login'), (req, res, next) => {
-    
     Group.find()
     .populate('currentBook')
     .populate('members')
     .populate('owner')
         .then((allGroups)=>{
-
             for(i = 0; i < allGroups.length; i++){
                 if(allGroups[i].owner.name === req.user.name){
                     allGroups[i].myGroup = true;
                 }
             }
-
             Group.find()
                 .populate('currentBook')
                 .populate('members')
                 .populate('owner')
                 .then((groupsArray)=>{
-
-                    console.log(groupsArray);
-
+                    // console.log(groupsArray);
                     for(let i = 0; i < groupsArray.length; i++){
-
                         for(let j = 0; j < groupsArray[i].members.length; j++)
-
                             if(groupsArray[i].members[j].name === req.user.name){
-                            
-                                console.log('-----------------------------------------------FOUND A GROUP I AM IN');
-                                console.log(groupsArray[i].name);
                                 groupsArray[i].included = true;
-
                         }
                     }
                     res.render('users/userGroups', {allGroups:allGroups,groupsArray:groupsArray});
                 })
                 .catch((err)=>{
-
                     console.log(err);
-
                 });
         })
         .catch((err)=>{
-
             console.log(err);
-
         });
 });
     
@@ -210,27 +195,20 @@ router.get('/users/edit/:id', ensure.ensureLoggedIn('/users/login'), (req,res,ne
 // GET ROUTE FOR USER PROFILE PAGE
 
 router.get('/users/:id', ensure.ensureLoggedIn('/users/login'), (req,res,next)=>{
-
     const theID = req.params.id;
-
     User.findById(theID)
     .populate('bookShelf')
     .populate({path: 'groups', populate: {path: 'members'}})
     .populate('comments')
     .populate({path: 'comments', populate: {path: 'group'}})
         .then((userInfo)=>{
-
             console.log(`-------------------------------------`,userInfo);
             // console.log(userInfo.groups)
             res.render('users/userProfile', userInfo);
-
         })
         .catch((err)=>{
-
             console.log(err);
-
         });
-    
 });
 
 
