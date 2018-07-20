@@ -2,28 +2,32 @@
 
 <h1>SIGNUP PAGE</h1>
 
-<form action="/users/signup" method="post">
-
-    <p><label for="name">Name: </label>
-    <input id="name" type="text" name="name" placeholder="What's your name?">
+<div class="row d-flex align-content-center">
     
-    <p><label for="username">Email address: </label>
-    <input id="username" type="text" name="email" placeholder="Pick a Username">
+    <div class="col-4 align-content-center">
 
-    <p><label for="password">Password: </label>
-    <input id="password" type="password" name="password" placeholder="Pick a Password">
+    <form class="signup-form" action="/users/signup" method="post">
 
-    <p><button>SUBMIT</button>
+        <p><label class="center" for="name">Name: </label>
+        <input class="center" id="name" type="text" name="name" placeholder="What's your name?">
+        
+        <p><label class="center" for="username">Email address: </label>
+        <input class="center" id="username" type="text" name="email" placeholder="Pick a Username">
 
-</form>
+        <p><label class="center" for="password">Password: </label>
+        <input class="center" id="password" type="password" name="password" placeholder="Pick a Password">
 
-<p>{{#if errorMessage}}
+        <p><button>SUBMIT</button>
 
-<div>
+    </form>
+
+    <p>{{#if errorMessage}}
 
     <h1>{{errorMessage}}</h1>
 
+    </div>
+
 </div>
 {{/if}}
-
+</div>
 </div>

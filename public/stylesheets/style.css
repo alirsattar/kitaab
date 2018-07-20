@@ -116,4 +116,11 @@ html {
   font-size: 2.5em;
   padding-left: 20vw; }
 
+.signup-form {
+  display: flex;
+  flex-direction: column; }
+
+.signup-form input {
+  float: right; }
+
 /*# sourceMappingURL=style.css.map */

@@ -190,6 +190,16 @@ html {
   padding-left: 20vw;
 }
 
+.signup-form {
+  display: flex;
+  // justify-content: space-between;
+  flex-direction: column;
+}
+
+.signup-form input {
+  float: right;
+}
+
 // .layout-nav {
 //   background-color: rgba(0,0,0,0);
 //   height: 0;
