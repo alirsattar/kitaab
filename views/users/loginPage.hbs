@@ -2,26 +2,30 @@
 
 <h1>LOGIN PAGE</h1>
 
-<form action="/users/login" method="post">
+    <div class="mx-auto col-4 login-box">
 
-    <label for="username">Email: </label>
-    <input id="username" type="text" name="email">
+    <form action="/users/login" method="post">
 
-    <P></P><label for="password">Password: </label>
-    <input id="password" type="password" name="password">
+        <label for="username">Email: </label>
+        <input id="username" type="text" name="email">
 
-    <button>SUBMIT</button>
+        <P></P><label for="password">Password: </label>
+        <input id="password" type="password" name="password">
 
-</form>
+        <p></p><button class="mx-auto btn-primary">SUBMIT</button>
 
-<p>{{#if message}}
+    </form>
 
-<div>
+    <p>{{#if message}}
 
-    <h1 color="red">{{message}}</h1>
+    <div>
 
-</div>
+        <h1 color="red">{{message}}</h1>
 
-{{/if}}
+    </div>
+
+    {{/if}}
+
+    </div>
 
 </div>
