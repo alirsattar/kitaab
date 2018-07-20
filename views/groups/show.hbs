@@ -1,3 +1,5 @@
+<div class="container">
+
 <h1>{{name}}</h1>
 
 <div class="groups-container">
@@ -39,7 +41,7 @@
             <p></p><b>Latest Comment By:</b>
                 {{#if memberComments}}
                 {{#each memberComments}}
-                <li><a href="/users/">{{this.author.name}}</a></li>
+                <li><a href="/userprofile/{{this.author._id}}">{{this.author.name}}</a></li>
                 {{/each}}
                 {{/if}}
                 {{#unless memberComments}}
@@ -48,9 +50,9 @@
 
             <p><b>Manage Group:</b></p>
             {{#if owner.yes}}
-            <br><button class="edit-group"><a href="/groups/edit/{{this._id}}">EDIT THIS GROUP</a></button>
-            &nbsp;&nbsp;&nbsp;<button>ADD MEMBERS</button>
-            &nbsp;&nbsp;&nbsp;<button class="delete-group">DELETE THIS GROUP</button>
+            <p><button class="edit-group"><a href="/groups/edit/{{this._id}}">EDIT THIS GROUP</a></button>
+            <p><button>ADD MEMBERS</button>
+            <p><button class="delete-group">DELETE THIS GROUP</button>
             {{/if}}
             {{#unless owner.yes}}
             <p>Only this group's owner ({{owner.name}}) can make changes to the group.
@@ -73,7 +75,7 @@
 
             <div class="comments-box-container">
                 <form action="/groups/{{_id}}/comment/{{currentBook._id}}/submit" method="post">
-                    <textarea id="comments-input" rows="10" cols="75" name="content"></textarea>
+                    <textarea id="comments-input" rows="10" cols="50" name="content"></textarea>
                     <button type="submit" id="comment-button">SUBMIT COMMENT</button>
                 </form>
             </div>
@@ -81,5 +83,5 @@
         </div>
 
 </div>
-
+</div>
     <script src="/javascripts/groupsShow.js"></script>

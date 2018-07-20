@@ -12,7 +12,7 @@ html {
 }
 
 #root {
-  max-width: 1200px;
+  // max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -22,6 +22,7 @@ html {
   background-color: #D5D5D5;
   min-height: 200px;
   border-radius: 5px;
+  height: auto;
 }
 
 .book-card {
@@ -51,17 +52,17 @@ html {
   justify-content: center;
 }
 
-@media screen and (min-width: 600px) {
-  .card {
-    flex: 1 1 calc(50% - 2rem);
-  }
-}
+// @media screen and (min-width: 600px) {
+//   .card {
+//     flex: 1 1 calc(50% - 2rem);
+//   }
+// }
 
-@media screen and (min-width: 900px) {
-  .card {
-    flex: 1 1 calc(33% - 2rem);
-  }
-}
+// @media screen and (min-width: 900px) {
+//   .card {
+//     flex: 1 1 calc(33% - 2rem);
+//   }
+// }
 
 .left-half {
   width: 30%;
@@ -149,6 +150,20 @@ html {
   float: right;
   width: 70%;
 }
+
+// .userprofile-left {
+//   float: left;
+// }
+
+// .userprofile-middle {
+//   float: left;
+//   margin-left: 100px;
+// }
+
+// .userprofile-right {
+//   float: left;
+//   margin-left: 100px;
+// }
 
 // .index-header {
 //   background-image: url('/images/library_background.jpg');

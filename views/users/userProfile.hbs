@@ -1,35 +1,50 @@
+
+<div class="container">
+
 <h1>USER PROFILE PAGE</h1>
+    <div class="row">
 
-{{userInfo}}
 
-<img src="{{avatar}}">
+<div class="col-4"><img src="{{avatar}}">
 
-<p><b>Name: </b>{{name}}</p>
+    <p><b>Name: </b>{{name}}</p>
 
-<p><b>Email: </b>{{email}}</p>
+    <p><b>Email: </b>{{email}}</p>
 
-<p><b>Groups:</b></p>
-    {{#each groups}}
-        <li><a href="/groups/show/{{this._id}}">{{this.name}}</a></li>
-    {{/each}}
+</div>
 
-    <hr>
+<div class="col-4">
 
-<p><b>Comments:</b></p>
-    {{#if comments}}
-    {{#each comments}}
-        <p><b>Group: </b>{{this.group.name}}
-        <br>"{{this.content}}"
-    {{/each}}
-    {{/if}}
-    {{#unless comments}}
-    <p>This user hasn't made any comments yet.</p>
-    {{/unless}}
+    <p><b>Groups:</b></p>
+        {{#each groups}}
+            <li><a href="/groups/show/{{this._id}}">{{this.name}}</a></li>
+        {{/each}}
 
-    <hr>
+</div>
 
-<p><b>Bookshelf:</b></p>
-<br>Coming soon!
+<div class="col-4">
+
+    <p><b>Comments:</b></p>
+        {{#if comments}}
+        {{#each comments}}
+            <p><b>Group: </b>{{this.group.name}}
+            <br>"{{this.content}}"
+        {{/each}}
+        {{/if}}
+        {{#unless comments}}
+        <p>This user hasn't made any comments yet.</p>
+        {{/unless}}
+
+        <hr>
+
+    <p><b>Bookshelf:</b></p>
+    <br>Coming soon!
+
+</div>
+
+</div>
+
+</div>
 
 {{!-- <p>My Progress:
 
