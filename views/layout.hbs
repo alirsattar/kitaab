@@ -2,47 +2,37 @@
 <html>
   <head>
     <title>Kitaab</title>
-    <script
-  src="/javascripts/jquery-3.3.1.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+        crossorigin="anonymous">
     <script src="/javascripts/axios.js"></script>
-    <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
     <link rel='stylesheet' href='/stylesheets/style.css' />
-    <script src="/javascripts/bootstrap.min.js"></script>
     
   </head>
   <body>
 
 
-  <nav class="navbar-expand-lg">
-    <div class="left-links">
+<div class="container">
+  <nav class="row navbar navbar-expand-xs">
       <a href="/">HOME</a>
-      &nbsp;
-      &nbsp;
-      {{#unless user}}<a href="/users/signup">SIGNUP</a>
-      &nbsp;
-      &nbsp;
-      <a href="/users/login">LOGIN</a>{{/unless}}
-      &nbsp;
-      &nbsp;
-      {{#if user}}<a href="/users/{{user._id}}">MY PROFILE</a>
-      &nbsp;
-      &nbsp;
-      <a href="/users/edit/{{user._id}}">EDIT PROFILE</a>
-      &nbsp;
-      &nbsp;
+      {{#unless user}}
+      <a href="/users/signup">SIGNUP</a>
+      <a href="/users/login">LOGIN</a>
+      {{/unless}}
+      {{#if user}}
+      <a href="/users/{{user._id}}">MY PROFILE</a>
       <a href="/users/groups">MY GROUPS</a>
-      &nbsp;
-      &nbsp;
       <a href="/groups/new">NEW GROUP</a>
-      &nbsp;
-      &nbsp;
       <a href="/users/books/{{user._id}}">MY BOOKSHELF</a>
-    </div>
-    <div class="user-name">
-      <a href="/logout">LOGOUT</a>{{/if}}
-    </div>
+      <a href="/logout">LOGOUT</a>
+      {{/if}}
   </nav>
-
+</div>
 
     {{{body}}}
 
