@@ -6,7 +6,7 @@ $('#get-book').click(function(){
   var searchTerms = document.getElementById('searchInput');
   var searchTermsEdited = searchTerms.value.replace(/\s/g, "+");
   var url = `https://www.googleapis.com/books/v1/volumes?q=${searchTermsEdited}&maxResults=40&orderBy:relevance`;
-  $('.container').empty();
+  $('.bookresults-container').empty();
   console.log(url);
   axios.get(`${url}`)
     .then((theBooks)=>{
