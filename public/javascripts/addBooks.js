@@ -16,14 +16,20 @@ $('#get-book').click(function(){
           const bookDescription = theBooks.data.items[i].volumeInfo.description;
           const bookCard = `
             <div class="book-card">
-            <img class="card-img" src="${theBooks.data.items[i].volumeInfo.imageLinks.thumbnail}">
-            <h2 class="card-title">${theBooks.data.items[i].volumeInfo.title}</h2>
-            <p><b>Author: </b><span class="card-author">${theBooks.data.items[i].volumeInfo.authors[0]}</span></p>
-            <br><b>Book ID: </b><span class="card-bookID">${theBooks.data.items[i].id}</span>
-            <br><b>Rating: </b><span class="card-rating">${theBooks.data.items[i].volumeInfo.averageRating}</span> out of 5
-            <br><b>Pages: </b><span class="card-pagecount">${theBooks.data.items[i].volumeInfo.pageCount}</span>
-            <p><b>Description: </b><span class="card-description">${bookDescription.substring(0,300)}</span>...</p>
-            <button class="select-book">CHOOSE THIS BOOK</button>
+            <div class="book-card-cover mb-3 mx-auto">
+              <img class="card-img" src="${theBooks.data.items[i].volumeInfo.imageLinks.thumbnail}">
+            </div>
+            <div class="book-card-info">
+              <h3 class="card-title">${theBooks.data.items[i].volumeInfo.title}</h3>
+              <p><b>Author: </b><span class="card-author">${theBooks.data.items[i].volumeInfo.authors[0]}</span></p>
+              <br><b>Book ID: </b><span class="card-bookID">${theBooks.data.items[i].id}</span>
+              <br><b>Rating: </b><span class="card-rating">${theBooks.data.items[i].volumeInfo.averageRating}</span> out of 5
+              <br><b>Pages: </b><span class="card-pagecount">${theBooks.data.items[i].volumeInfo.pageCount}</span>
+              <p><b>Description: </b><span class="card-description">${bookDescription.substring(0,300)}</span>...</p>
+            </div>
+            <div class="book-card-button mx-auto">
+              <button class="select-book rounded">CHOOSE THIS BOOK</button>
+            </div>
             </div>
           `;
           $('.bookresults-container').append(bookCard);
@@ -41,7 +47,7 @@ $(document).on('click','.select-book',function(e){
   }
   
   const theButton = $(this);
-  const thisBook = $(this).parent();
+  const thisBook = $(this).parent().parent();
   turnCollectionToArray(thisBook);
  
   // WORKING CONSOLE.LOGS TO ACCESS INFO INSIDE THE CARDS

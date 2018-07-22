@@ -1,3 +1,5 @@
+<div class="container">
+
         <h1>CREATE NEW GROUP PAGE</h1>
 <div class="left-half">
 
@@ -5,11 +7,11 @@
         <form action="/groups/create/" method="post">
 
         <label for="name">Group Name:</label>
-        <input type="text" name="name" id="name">
+        <input type="text" name="name" id="name" required="true">
         <br>
 
         <label for="members">Add Members:</label>
-        <select multiple name="members" id="members" class="select-members">
+        <select multiple name="members" id="members" class="select-members" required="true">
                 {{#each allUsers}}
                         {{#unless this.yes}}
                         <option value="{{this._id}}">{{this.name}}</option>
@@ -48,7 +50,7 @@
             {{!-- &nbsp;&nbsp;&nbsp;&nbsp;<h1>GET A BOOK</h1> --}}
 
 
-                <input id="searchInput" type="text"  ></input>
+                <input id="searchInput" type="text" required="true"></input>
                 <button id="get-book">SEARCH FOR BOOK</button>
 
         </div>
@@ -57,3 +59,6 @@
 </div>
 
 <script src='/javascripts/addBooks.js'></script>
+
+
+</div>

@@ -8,25 +8,116 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
         crossorigin="anonymous">
     <link rel='stylesheet' href='/stylesheets/style.css' />
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   </head>
   <body>
 
 <div class="container">
-  <nav class="row navbar navbar-expand-xs">
-      <a href="/">HOME</a>
-      {{#unless user}}
-      <a href="/users/signup">SIGNUP</a>
-      <a href="/users/login">LOGIN</a>
-      {{/unless}}
-      {{#if user}}
-      <a href="/users/{{user._id}}">MY PROFILE</a>
-      <a href="/users/groups">MY GROUPS</a>
-      <a href="/groups/new">NEW GROUP</a>
-      <a href="/users/books/{{user._id}}">MY BOOKSHELF</a>
-      <a href="/logout">LOGOUT</a>
-      {{/if}}
+  <nav class="navbar navbar-expand-sm navbar-light">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">  
+      <ul class="navbar-nav">
+        <li class="nav-item mr-5"><a class="nav-link" href="/">HOME</a></li>
+        {{#unless user}}
+        <li class="nav-item mr-5"><a class="nav-link" data-toggle="modal" data-target="#signupModal">SIGNUP</a></li>
+        <li class="nav-item mr-5"><a class="nav-link" data-toggle="modal" data-target="#loginModal">LOGIN</a></li>
+        {{/unless}}
+        {{#if user}}
+        <li class="nav-item mr-5"><a class="nav-link" href="/users/{{user._id}}">MY PROFILE</a></li>
+        <li class="nav-item mr-5"><a class="nav-link" href="/users/groups">MY GROUPS</a></li>
+        <li class="nav-item mr-5"><a class="nav-link" href="/groups/new">NEW GROUP</a></li>
+        <li class="nav-item mr-5"><a class="nav-link" href="/users/books/{{user._id}}">MY BOOKSHELF</a></li>
+        <li class="nav-item mr-5"><a class="nav-link" href="/logout">LOGOUT</a></li>
+        {{/if}}
+      </ul>
+    </div>
   </nav>
+</div>
+
+<div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Register for Kitaab</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        
+        <form class="signup-form" action="/users/signup" method="post">
+
+        <p class="mx-auto"><label for="name">Name: </label>
+        <div class="input-group input-group-lg">
+        <input class="mx-auto" id="name" type="text" name="name" placeholder="What's your name?">
+        </div>
+        
+        <p class="mx-auto pt-3"><label for="username">Email address: </label>
+        <div class="input-group input-group-lg">
+        <input class="mx-auto" id="username" type="text" name="email" placeholder="Pick a Username">
+        </div>
+
+        <p class="mx-auto pt-3"><label for="password">Password: </label>
+        <div class="input-group input-group-lg">
+        <input class="mx-auto" id="password" type="password" name="password" placeholder="Pick a Password">
+        </div>
+
+        <p class="mx-auto pt-5"><button class="btn-primary">SUBMIT</button>
+
+        </form>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Log in to Kitaab</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-auto">
+        
+        
+        <form action="/users/login" method="post">
+
+            <label class="mx-auto" for="username">Email: </label>
+            <div class="input-group input-group-lg">
+                <input class="mx-auto" id="username" type="text" name="email">
+            </div>
+
+            <P class="mx-auto"></P><label for="password">Password: </label>
+            <div class="input-group input-group-lg">
+            <input class="mx-auto" id="password" type="password" name="password">
+            </div>
+
+            <p></p><button class="mx-auto btn-primary">SUBMIT</button>
+
+        </form>
+
+        <p>{{#if message}}
+
+            <div>
+
+                <h1 color="red">{{message}}</h1>
+
+            </div>
+
+        {{/if}}
+
+
+      </div>
+    </div>
+  </div>
 </div>
 
     {{{body}}}

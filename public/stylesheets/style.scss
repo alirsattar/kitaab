@@ -11,10 +11,10 @@ html {
   background: #F6F6F6;
 }
 
-#root {
-  // max-width: 1200px;
-  margin: 0 auto;
-}
+// #root {
+//   // max-width: 1200px;
+//   margin: 0 auto;
+// }
 
 .bookresults-container {
   display: flex;
@@ -27,13 +27,28 @@ html {
 
 .book-card {
   margin: 10px;
-  width: 30%;
+  width: 100%;
   background: white;
   box-shadow: 2px 4px 25px rgba(0, 0, 0, .1);
   border-radius: 12px;
   overflow: hidden;
   transition: all .2s linear;
   padding: 10px;
+  // display: flex;
+}
+
+.book-card-cover {
+  float:left;
+  width: 20%
+}
+
+.book-card-info {
+  float:right;
+  width: 70%;
+}
+
+.book-card-button {
+  clear: both;
 }
 
 .book-card img {
@@ -51,18 +66,6 @@ html {
 .select-book {
   justify-content: center;
 }
-
-// @media screen and (min-width: 600px) {
-//   .card {
-//     flex: 1 1 calc(50% - 2rem);
-//   }
-// }
-
-// @media screen and (min-width: 900px) {
-//   .card {
-//     flex: 1 1 calc(33% - 2rem);
-//   }
-// }
 
 .left-half {
   width: 30%;
@@ -151,43 +154,35 @@ html {
   width: 70%;
 }
 
-// .userprofile-left {
-//   float: left;
-// }
-
-// .userprofile-middle {
-//   float: left;
-//   margin-left: 100px;
-// }
-
-// .userprofile-right {
-//   float: left;
-//   margin-left: 100px;
-// }
-
 .index-header {
   background-image: url('/images/library_background.jpg');
   background-position: center;
   height: 100vh;
   color: white;
+  font-family: 'Kaushan Script', cursive;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
   // padding-top: 50px;
 }
 
-.index-header {
-  font-family: 'Kaushan Script', cursive;
-  // display: flex;
+.kitaab-title-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-content: center;
 }
 
 .splash-title {
   font-size: 10em;
-  padding-top: 25vh;
-  padding-left: 15vw;
+  // padding-top: 25vh;
+  // padding-left: 15vw;
 }
 
 .splash-subtitle {
   font-size: 2.5em;
-  padding-left: 20vw;
+  // padding-left: 20vw;
 }
 
 .signup-form {
@@ -203,41 +198,3 @@ html {
 .login-box input {
   float: right;
 }
-
-// .layout-nav {
-//   background-color: rgba(0,0,0,0);
-//   height: 0;
-//   color: white;
-//   // height: 10vh;
-//   display: flex;
-//   justify-content: space-between;
-// }
-
-// .layout-nav a {
-//   padding-top: 20px;
-// }
-
-// .left-links{
-//   display: flex;
-//   flex-direction: row;
-//   justify-content: space-evenly;
-// }
-
-// .left-links a {
-//   color: white;
-//   font-size: 1.5em;
-// }
-
-// .user-name {
-//   color: white;
-//   padding-top: 20px;
-// }
-
-// .user-name a {
-//   color: white;
-//   font-size: 1.5em;
-// }
-
-// .kitaab-title-container {
-//   // width: 100%;
-// }
