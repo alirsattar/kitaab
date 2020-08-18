@@ -7,25 +7,25 @@
     "dev": "DEBUG=kitaab-project:* nodemon ./bin/www"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "~1.18.2",
     "connect-ensure-login": "^0.1.1",
     "connect-flash": "^0.1.1",
-    "connect-mongo": "^2.0.1",
-    "cookie-parser": "~1.4.3",
+    "connect-mongo": "^2.0.3",
+    "cookie-parser": "^1.4.5",
     "dotenv": "~4.0.0",
-    "express": "~4.16.0",
-    "express-session": "^1.15.6",
-    "hbs": "~4.0.1",
-    "mongoose": "~4.13.4",
-    "morgan": "~1.9.0",
+    "express": "^4.16.4",
+    "express-session": "^1.17.1",
+    "hbs": "^4.0.6",
+    "mongoose": "^4.13.21",
+    "morgan": "^1.9.1",
     "node-sass-middleware": "0.11.0",
-    "passport": "^0.4.0",
+    "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "serve-favicon": "~2.4.5"
   },
   "devDependencies": {
-    "nodemon": "^1.12.1"
+    "nodemon": "^1.19.4"
   }
 }
