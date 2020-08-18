@@ -8,8 +8,14 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      gtag('config', 'UA-175753181-1');
+      gtag('config', 'UA-175753181-1');        
     </script>
+
+    {{#if user}}
+      <script>
+        gtag('set', {'user_id': user._id}); // Set the user ID using signed-in user_id.
+      </script>
+    {{/if}}
 
     <title>Kitaab</title>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
