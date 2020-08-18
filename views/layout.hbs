@@ -13,7 +13,7 @@
 
     {{#if user}}
       <script>
-        gtag('set', {'user_id': user._id}); // Set the user ID using signed-in user_id.
+        gtag('set', {'user_id': '{{user._id}}' }); // Set the user ID using signed-in user_id.
       </script>
     {{/if}}
 
