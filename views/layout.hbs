@@ -1,147 +1,232 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-175753181-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
 
-      gtag('config', 'UA-175753181-1');        
-    </script>
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-175753181-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-    {{#if user}}
-      <script>
-        gtag('set', {'user_id': '{{user._id}}' }); // Set the user ID using signed-in user_id.
-      </script>
-    {{/if}}
+    gtag('config', 'UA-175753181-1');        
+  </script>
 
-    <title>Kitaab</title>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="/javascripts/axios.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
-        crossorigin="anonymous">
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  </head>
-  <body>
+  {{#if user}}
+  <script>
+    gtag('set', { 'user_id': '{{user._id}}' }); // Set the user ID using signed-in user_id.
+  </script>
+  {{/if}}
 
-<div class="container">
-  <nav class="navbar navbar-expand-sm navbar-light">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <title>Kitaab</title>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="/javascripts/axios.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css"
+    integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+
+<body>
+
+  <div class="container">
+    <nav class="navbar navbar-expand-sm navbar-light">
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
-    </button>
-    
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">  
-      <ul class="navbar-nav">
-        <li class="nav-item mr-5"><a class="nav-link" href="/">HOME</a></li>
-        {{#unless user}}
-        <li class="nav-item mr-5"><a class="nav-link" href="/users/signup">SIGNUP</a></li>
-        <li class="nav-item mr-5"><a class="nav-link" href="/users/login">LOGIN</a></li>
-        {{/unless}}
-        {{#if user}}
-        <li class="nav-item mr-5"><a class="nav-link" href="/users/{{user._id}}">MY PROFILE</a></li>
-        <li class="nav-item mr-5"><a class="nav-link" href="/users/groups">MY GROUPS</a></li>
-        <li class="nav-item mr-5"><a class="nav-link" href="/groups/new">NEW GROUP</a></li>
-        <li class="nav-item mr-5"><a class="nav-link" href="/users/books/{{user._id}}">MY BOOKSHELF</a></li>
-        <li class="nav-item mr-5"><a class="nav-link" href="/logout">LOGOUT</a></li>
-        {{/if}}
-      </ul>
-    </div>
-  </nav>
-</div>
+      </button>
 
-<div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Register for Kitaab</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+          <li class="nav-item mr-5"><a class="nav-link" href="/">Home</a></li>
+
+          {{!-- IF NO CURRENT LOGGED-IN USER --}}
+          {{#unless user}}
+            <li class="nav-item mr-5">
+              <a
+                class="nav-link modal-link"
+                data-toggle="modal"
+                data-target="#signup-modal">
+                  Sign Up
+              </a>
+            </li>
+            <li class="nav-item mr-5">
+              <a
+                class="nav-link modal-link"
+                data-toggle="modal"
+                data-target="#login-modal">
+                  Login
+              </a>
+            </li>
+          {{/unless}}
+
+          {{!-- IF THERE IS A CURRENTLY LOGGED-IN USER --}}
+          {{#if user}}
+          <li class="nav-item mr-5">
+            <a class="nav-link" href="/users/{{user._id}}">My Profile</a>
+          </li>
+          <li class="nav-item mr-5">
+            <a class="nav-link" href="/users/groups">My Groups</a>
+          </li>
+          <li class="nav-item mr-5">
+            <a class="nav-link" href="/groups/new">New Group</a>
+          </li>
+          <li class="nav-item mr-5">
+            <a class="nav-link" href="/users/books/{{user._id}}">My Bookshelf</a>
+          </li>
+          <li class="nav-item mr-5">
+            <a class="nav-link" href="/logout">Logout</a>
+          </li>
+          {{/if}}
+        </ul>
       </div>
-      <div class="modal-body">
-        
-        
-        <form class="signup-form" action="/users/signup" method="post">
+    </nav>
+  </div>
 
-        <p class="mx-auto"><label for="name">Name: </label>
-        <div class="input-group input-group-lg">
-        <input class="mx-auto" id="name" type="text" name="name" placeholder="What's your name?">
+  {{!-- SIGNUP MODAL --}}
+  <div
+    class="modal fade"
+    id="signup-modal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="signup-modal"
+    aria-hidden="true">
+      <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="signup-modal-title">Register for Kitaab</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-        
-        <p class="mx-auto pt-3"><label for="username">Email address: </label>
-        <div class="input-group input-group-lg">
-        <input class="mx-auto" id="username" type="text" name="email" placeholder="Pick a Username">
+        <div class="modal-body">
+
+          <form class="signup-form" action="/users/signup" method="post">
+
+            {{!-- NAME INPUT --}}
+            <div class="form-group">
+              <label for="name">Name: </label>
+              <input
+                type="text"
+                class="form-control"
+                id="exampleInputEmail1"
+                name="name"
+                aria-describedby="emailHelp"
+                placeholder="Your full name"
+                required>
+            </div>
+
+            {{!-- EMAIL ADDRESS INPUT --}}
+            <div class="form-group">
+              <label for="email">Email address:</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email-input"
+                name="email"
+                placeholder="Enter your email"
+                required>
+            </div>
+
+            {{!-- PASSWORD INPUT --}}
+            <div class="form-group">
+              <label for="password">Choose a password:</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password-input"
+                name="password"
+                placeholder="Choose a password"
+                required>
+            </div>
+
+            <button
+              type="submit"
+              class="btn btn-primary">
+                Sign Up
+            </button>
+          </form>
+
         </div>
-
-        <p class="mx-auto pt-3"><label for="password">Password: </label>
-        <div class="input-group input-group-lg">
-        <input class="mx-auto" id="password" type="password" name="password" placeholder="Pick a Password">
-        </div>
-
-        <p class="mx-auto pt-5"><button class="btn-primary">SUBMIT</button>
-
-        </form>
-
-
       </div>
     </div>
   </div>
-</div>
 
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Log in to Kitaab</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-auto">
-        
-        
-        <form action="/users/login" method="post">
+  {{!-- LOGIN MODAL --}}
+  <div
+    class="modal fade"
+    id="login-modal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="login-modal"
+    aria-hidden="true">
+      <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Log in to Kitaab</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="/users/login" method="post">
 
-            <label class="mx-auto" for="username">Email: </label>
-            <div class="input-group input-group-lg">
-                <input class="mx-auto" id="username" type="text" name="email">
+            {{!-- LOGIN EMAIL INPUT --}}
+            <div class="form-group">
+              <label for="login-email">Enter your email:</label>
+              <input
+                type="email"
+                class="form-control"
+                id="login-email-input"
+                name="email"
+                placeholder="Email"
+                required>
             </div>
 
-            <P class="mx-auto"></P><label for="password">Password: </label>
-            <div class="input-group input-group-lg">
-            <input class="mx-auto" id="password" type="password" name="password">
+            {{!-- LOGIN PASSWORD INPUT --}}
+            <div class="form-group">
+              <label for="password">Enter your password:</label>
+              <input
+                type="password"
+                class="form-control"
+                id="login-password-input"
+                name="password"
+                placeholder="Password"
+                required>
             </div>
 
-            <p></p><button class="mx-auto btn-primary">SUBMIT</button>
+            <button type="submit" class="mx-auto btn btn-primary">Login</button>
 
-        </form>
+          </form>
 
-        <p>{{#if message}}
+          <p>{{#if message}}
 
-            <div>
+          <div>
 
-                <h1 color="red">{{message}}</h1>
+            <h1 color="red">{{message}}</h1>
 
-            </div>
+          </div>
 
-        {{/if}}
+          {{/if}}
 
 
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-    {{{body}}}
+  {{{body}}}
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
-        crossorigin="anonymous"></script>
-    
-  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"
+    integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
+    crossorigin="anonymous"></script>
+
+</body>
+
 </html>

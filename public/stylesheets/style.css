@@ -138,4 +138,8 @@ html {
 .login-box input {
   float: right; }
 
+.modal-link {
+  cursor: pointer;
+}
+
 /*# sourceMappingURL=style.css.map */
