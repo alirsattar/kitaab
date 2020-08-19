@@ -1,29 +1,19 @@
-
-<div class="container">
-
-    <h1>BOOK DETAILS PAGE</h1>
-
-        <h1>{{title}}</h1>
-    
-    <div class="row">
-    
-            
-            <div class="book-view-thumbnail col-md-3 col-lg-2 col-xs-12">
-                
-                <p></p><img src="{{imageLinks.thumbnail}}">
-            
-            </div>
-
-            <div class="book-info col-md-9 col-lg-10 col-xs-12">
-                
-                <p><b>Author(s):</b>{{#each authors}}<li>{{this}}</li>{{/each}}
-                <br><b>Publisher: </b>{{publisher}}
-                <br><b>Published: </b>{{publishedDate}}
-                <p>{{description}}
-
-            
-            </div>
-
-    </div>
-
+<div
+	class="container"
+	id="book-details-page">
+		<h1>BOOK DETAILS PAGE</h1>
+		<h1>{{title}}</h1>
+		<div class="row">
+			<div class="book-view-thumbnail col-md-3 col-lg-2 col-xs-12">
+				<p></p><img src="{{imageLinks.thumbnail}}">
+			</div>
+			<div class="book-info col-md-9 col-lg-10 col-xs-12">
+				<p><b>Author(s):</b>{{#each authors}}<li>{{this}}</li>{{/each}}
+					<br><b>Publisher: </b>{{publisher}}
+					<br><b>Published: </b>{{publishedDate}}
+				<div>
+					{{{description}}}
+				</div>
+			</div>
+		</div>
 </div>
